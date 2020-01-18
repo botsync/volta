@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package>
+  <name>volta_navigation</name>
+  <version>6.0.0</version>
+  <description>The volta_navigation package</description>
+
+  <maintainer email="nikhil@botsync.sg">Nikhil Venkatesh</maintainer>
+  <author email="nikhil@botsync.sg">Nikhil Venkatesh</author>
+
+  <url type="repository">https://bitbucket.org/botsync/volta</url>
+  
+  <license>BSD2</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>amcl</run_depend>
+  <run_depend>move_base</run_depend>
+  <run_depend>gmapping</run_depend>
+  <run_depend>dwa_local_planner</run_depend>
+  <run_depend>global_planner</run_depend>
+  <run_depend>map_server</run_depend>
+
+  <export>
+  </export>
+</package>

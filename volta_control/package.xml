@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <name>volta_control</name>
+  <version>6.0.0</version>
+  <description>The volta_control package</description>
+
+  <maintainer email="nikhil@botsync.sg">Nikhil Venkatesh</maintainer>
+
+  <license>BSD2</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>controller_manager</build_depend>
+  <build_depend>diff_drive_controller</build_depend>
+  <build_depend>joint_state_controller</build_depend>
+  <build_depend>twist_mux</build_depend>
+  <run_depend>controller_manager</run_depend>
+  <run_depend>diff_drive_controller</run_depend>
+  <run_depend>joint_state_controller</run_depend>
+  <run_depend>twist_mux</run_depend>
+
+  <export>
+  </export>
+</package>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="intel_D435_camera" default="false"/>
+    <arg name="rplidar_a3" default="false"/>
+    <arg name="um7_imu" default="false"/>
+
+    <group if="$(arg um7_imu)">
+        <node pkg="um7" type="um7_driver" name="imu_driver">
+            <param name="port" value="/dev/ttyUSB1"/>
+            <param name="mag_updates" value="false"/>
+            <param name="tf_ned_to_enu" value="false"/>
+            <param name="frame_id" value="imu"/>
+            <remap from="imu" to="imu"/>
+        </node>
+    </group>
+
+    <!-- Include Intel D435 Driver -->
+    <group if="$(arg intel_D435_camera)"> 
+
+    </group>
+
+    <!-- Include RPLidar A3 Driver -->
+
+    <group if="$(arg rplidar_a3)">
+        
+    </group>
+
+</launch>

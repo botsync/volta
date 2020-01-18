@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <rosparam command="load" file="$(find magellan_localization)/config/localization.yaml" />
+    
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se_odom" clear_params="true" output="screen">
+        <remap from="odometry/filtered" to="odometry/filtered"/>
+    </node>
+
+</launch>

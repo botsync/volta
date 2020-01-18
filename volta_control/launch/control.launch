@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+	<rosparam command="load" file="$(find volta_control)/config/control.yaml" />
+	<node name="base_controller_spawner" pkg="controller_manager" type="spawner"
+        args="volta_joint_publisher volta_base_controller">
+    </node>
+
+    <node name="relay_odom" pkg="topic_tools" type="relay" output="screen" args="volta_base_controller/odom odometry/wheel" />
+    <node name="relay_cmd_vel" pkg="topic_tools" type="relay" output="screen" args="cmd_vel volta_base_controller/cmd_vel" />
+
+    <node pkg="twist_mux" type="twist_mux" name="twist_mux" output="screen">
+        <remap from="cmd_vel_out" to="cmd_vel" />
+        <rosparam command="load" file="$(find volta_control)/config/twist_mux.yaml" />
+    </node>
+</launch>
