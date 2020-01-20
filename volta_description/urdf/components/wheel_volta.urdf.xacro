@@ -35,9 +35,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <!-- Wheel Link -->
         <link name="${wheel_prefix}_wheel">
             <visual>
-                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <origin xyz="0 0 0" rpy="1.57 0 0"/>
                 <geometry>
-                    <mesh filename="package://volta_description/meshes/wheel_volta.STL"/>
+                    <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
                 </geometry>
                 <material name="black"/>
             </visual>
@@ -48,20 +48,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 </geometry>
             </collision>
             <inertial>
-                <mass value="2.637" />
-                <origin xyz="0 0 0" />
+                <mass value="0.050" />
+                <origin xyz="0 0 0" rpy="0 0 0" />
                 <inertia  ixx="${wheel_ixx}" ixy="${wheel_ixy}" ixz="${wheel_ixz}" iyy="${wheel_iyy}" iyz="${wheel_iyz}" izz="${wheel_izz}" />
             </inertial>
         </link>
-
-        <gazebo reference="${wheel_prefix}_wheel">
-            <material>Gazebo/Black</material>
-            <mu1 value="1.0"/>
-            <mu2 value="1.0"/>
-            <kp value="10000000.0"></kp>
-            <kd value="1.0"></kd>
-            <fdir1 value="1 0 0"/>
-        </gazebo>
 
         <!-- Wheel Joint -->
         <joint name="${wheel_prefix}_wheel_joint" type="continuous">
@@ -69,6 +60,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <child link="${wheel_prefix}_wheel" />
             <xacro:insert_block name="joint_origin" />
             <axis xyz="0 1 0" />
+	    <anchor xyz="0 0 0"/>
         </joint>
 
         <!-- Wheel Transmission -->

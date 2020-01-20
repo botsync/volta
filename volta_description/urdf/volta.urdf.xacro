@@ -70,6 +70,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 </geometry>
             </collision>
             <inertial>
+		<origin xyz ="-0.0223 0.0000 0.1018"/>
                 <mass value="${base_mass}"/>
                 <inertia ixx="${base_ixx}" ixy="${base_ixy}" ixz="${base_ixz}" iyy="${base_iyy}" iyz="${base_iyz}" izz="${base_izz}"/>
             </inertial>
