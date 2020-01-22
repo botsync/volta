@@ -9,7 +9,11 @@
     </group>
 
     <group>
-
+	<group>
+        <node name="volta_base_node" pkg="volta_base" type="volta_base">
+            <remap from="/tf" to="/firmware_tf"/>
+        </node>
+    </group>
         <arg name="model" default="$(find volta_description)/urdf/volta.xacro"/>
 
         <param name="robot_description" command="$(find xacro)/xacro.py --inorder $(arg model)"/>

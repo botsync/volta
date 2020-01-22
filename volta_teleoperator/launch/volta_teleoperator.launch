@@ -6,7 +6,7 @@
 
     <node pkg="joy" type="joy_node" name="joy_node"  unless="$(arg keyboard)" />
 
-    <node pkg="volta_teleoperator" type="joy_teleop_node" name="joy_teleop" output="screen" unless="$(arg keyboard)">
+    <node pkg="volta_teleoperator" type="volta_joy_teleop_node" name="joy_teleop" output="screen" unless="$(arg keyboard)">
     </node>
 
     <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" if="$(arg keyboard)">

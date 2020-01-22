@@ -10,8 +10,10 @@
   <buildtool_depend>catkin</buildtool_depend>
   <depend>teleop_twist_keyboard</depend>
   <depend>sensor_msgs</depend>
+  <depend>volta_msgs</depend>
   <depend>geometry_msgs</depend>
   <depend>teleop_twist_joy</depend>
+  <depend>actionlib_msgs</depend>
   <export>
   </export>
 </package>
