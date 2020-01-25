@@ -2,24 +2,24 @@
 
 # To Do
 
-- [ ] ROS Control Test on physical robot
-- [ ] Odometry Test on Physical Robot
-- [ ] PID control tuning
-- [ ] IMU Test
-- [ ] LIDAR Test
-- [ ] Camera Test
-- [ ] Configure On Board PC
-- [ ] Localization Test
-- [ ] Mapping Test
-- [ ] Update Instructions in README.md
-- [ ] Create  base package for public repo
-- [ ] Code Review (Nikhil Venkatesh)
-- [ ] Publish Public Repo (Nikhil Venkatesh)
+[ ] ROS Control Test on physical robot
+[ ] Odometry Test on Physical Robot
+[ ] PID control tuning
+[ ] IMU Test
+[ ] LIDAR Test
+[ ] Camera Test
+[ ] Configure On Board PC
+[ ] Localization Test
+[ ] Mapping Test
+[ ] Update Instructions in README.md
+[ ] Create  base package for public repo
+[ ] Code Review (Nikhil Venkatesh)
+[ ] Publish Public Repo (Nikhil Venkatesh)
 
 ## Optimization
 
-- [ ] Contoller and Interface Board Update - reduce number of wires, add programming switch, add DB9 connector
-- [ ] Change serial library for latency reduction
+[ ] Contoller and Interface Board Update - reduce number of wires, add programming switch, add DB9 connector
+[ ] Change serial library for latency reduction
 
 # Running the Simulation
 
