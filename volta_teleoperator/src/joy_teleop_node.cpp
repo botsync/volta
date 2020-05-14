@@ -1,16 +1,16 @@
 /*
-
 Copyright (c) 2018, Botsync Pte. Ltd.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
+
     * Redistributions of source code must retain the above copyright
       notice, this list of conditions and the following disclaimer.
     * Redistributions in binary form must reproduce the above copyright
       notice, this list of conditions and the following disclaimer in the
       documentation and/or other materials provided with the distribution.
-    * Neither the name of the Botsync Pte. Ltd. nor the 
+    * Neither the name of the Botsync Pte. Ltd. nor the
       names of its contributors may be used to endorse or promote products
       derived from this software without specific prior written permission.
 
@@ -25,7 +25,9 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+\author Botsync Pte. Ltd.
 */
+
 
 #include <volta_teleoperator/joy_teleop.h>
 
@@ -52,7 +54,7 @@ int main(int argc, char** argv) {
 
     nh.param<std::string>("joy_topic", joy_topic, "/joy");
 
-    cmd_vel_pub = nh.advertise<geometry_msgs::Twist>(cmd_vel_topic, 1); 
+    cmd_vel_pub = nh.advertise<geometry_msgs::Twist>(cmd_vel_topic, 1);
 
     joy_subscriber = nh.subscribe(joy_topic, 1, joy_callback);
 

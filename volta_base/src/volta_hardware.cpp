@@ -1,7 +1,36 @@
+/*
+Copyright (c) 2018, Botsync Pte. Ltd.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of the Botsync Pte. Ltd. nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+\author Botsync Pte. Ltd.
+*/
+
+
 #include <volta_base/volta_hardware.h>
 #include <boost/assign/list_of.hpp>
-
-
 
 namespace volta_base {
 void voltaHardware :: rpmCallback(const volta_msgs::RPM::ConstPtr& rpmTemp)
@@ -24,10 +53,10 @@ voltaHardware::voltaHardware(ros::NodeHandle nh, ros::NodeHandle private_nh, dou
 	prevRPMRight=0;
 	subMotorRPMRight = 0;
 	subMotorRPMLeft = 0;
-	
+
 	pubMotorRPMRight=0;
 	pubMotorRPMLeft=0;
-	
+
 	this->rpm_pub = nh.advertise<volta_msgs::RPM>("RPM_PUB", 100);
 	this->rpm_sub = nh.subscribe("RPM_SUB", 100, &voltaHardware :: rpmCallback,this);
 	ROS_ERROR("REGISTER CONTROLLERS");
@@ -75,19 +104,19 @@ void voltaHardware::update_encoder_readings_to_joints() {
     }
 }
 
-void voltaHardware::send_velocity_to_motors_from_joints() { 
+void voltaHardware::send_velocity_to_motors_from_joints() {
 	volta_msgs :: RPM rpm;
-	int16_t rpm_left, rpm_right;  
-	
+	int16_t rpm_left, rpm_right;
+
     	double left = this->joints_[0].velocity_command;
     	double right = this->joints_[1].velocity_command;
-	
+
 	//ROS_ERROR("SET radian left: %lf, RPM right: %lf", left, right);
 	rpm_left = (int16_t)convert_radians_to_rpm(left);
         rpm_right = (int16_t)convert_radians_to_rpm(right);
 
 	this->limit_speeds(rpm_left, rpm_right);
-	
+
 	rpm.right=rpm_right;
 	rpm.left = rpm_left;
 	if(rpm.left > 0 || rpm.right >0)
@@ -98,7 +127,7 @@ void voltaHardware::send_velocity_to_motors_from_joints() {
 //	ROS_ERROR("SET RPM left: %d, RPM right: %d", rpm_right, rpm_right);
 	}
 	this->rpm_pub.publish(rpm);
-    
+
 }
 
 void voltaHardware::set_speeds(double left, double right) {
@@ -150,4 +179,3 @@ double voltaHardware::convert_radians_to_rpm(double radians) {
     return ret;
 }
 }
-
