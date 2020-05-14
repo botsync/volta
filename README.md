@@ -23,7 +23,7 @@ $ roslaunch volta_base volta_bringup.launch
 ```
 $ roslaunch volta_navigation navigation.launch gmapping:=true  
 ```
-*Launch the rviz visualization tool by running:   
+* Launch the rviz visualization tool by running:   
 ```
 $ rosrun rviz rviz  
 ```
@@ -52,7 +52,7 @@ $ roslaunch volta_base volta_bringup.launch
 ```
 $ roslaunch volta_navigation navigation.launch  
 ```
-*Launch the rviz visualization tool by running:   
+* Launch the rviz visualization tool by running:   
 ```
 $ rosrun rviz rviz  
 ```
