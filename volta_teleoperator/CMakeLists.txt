@@ -29,3 +29,8 @@ target_link_libraries(volta_joy_teleop_node volta_joy_teleop ${catkin_LIBRARIES}
 
 add_executable(ackermann_joy_teleop src/ackermann_joy_teleop.cpp)
 target_link_libraries(ackermann_joy_teleop ${catkin_LIBRARIES})
+
+install(
+  DIRECTORY config include launch src
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
