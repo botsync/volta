@@ -2,11 +2,13 @@
 <package format="2">
   <name>volta_teleoperator</name>
   <version>7.0.0</version>
-  <description>The volta_teleoperator package</description>
 
-  <maintainer email="nikhil@botsync.sg">nikhil</maintainer>
+  <description>The volta_teleoperator package</description>
+  <maintainer email="nikhil@botsync.sg">Nikhil Venkatesh</maintainer>
 
   <license>BSD</license>
+  <author email="nikhil@botsync.sg">Nikhil Venkatesh</author>
+
   <buildtool_depend>catkin</buildtool_depend>
   <depend>teleop_twist_keyboard</depend>
   <depend>sensor_msgs</depend>

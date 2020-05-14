@@ -2,10 +2,13 @@
 <package>
   <name>volta_base</name>
   <version>6.0.0</version>
-  <description>The volta_base package</description>
 
-  <maintainer email="nikhil@botsync.sg">Nikhil</maintainer>
+  <description>The volta_base package</description>
+  <maintainer email="nikhil@botsync.sg">Nikhil Venkatesh</maintainer>
+
   <license>BSD</license>
+  <author email="nikhil@botsync.sg">Nikhil Venkatesh</author>
+
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>roscpp</build_depend>
   <build_depend>rospy</build_depend>
