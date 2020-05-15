@@ -26,13 +26,12 @@ catkin_package(
 INCLUDE_DIRS include
 CATKIN_DEPENDS hardware_interface volta_msgs roscpp sensor_msgs
 DEPENDS Boost )
+
 include_directories(include ${Boost_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS})
 set_directory_properties(PROPERTIES COMPILE_OPTIONS "-std=c++11;")
-add_library(volta_hardware src/volta_hardware.cpp)
-add_executable(volta_base src/volta_base.cpp)
-target_link_libraries(volta_base volta_hardware ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+
 
 install(
-  DIRECTORY include launch src
+  DIRECTORY include launch
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )

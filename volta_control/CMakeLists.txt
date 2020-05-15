@@ -7,8 +7,3 @@ find_package(catkin REQUIRED COMPONENTS
   joint_state_controller
   twist_mux
 )
-
-install(
-  DIRECTORY config launch
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-)
