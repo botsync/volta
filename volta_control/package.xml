@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <package>
   <name>volta_control</name>
-  <version>6.0.0</version>
+  <version>0.0.0</version>
 
   <description>The volta_control package</description>
-  <maintainer email="nikhil@botsync.sg">Nikhil Venkatesh</maintainer>
+  <maintainer email="mahendra.l@botsync.co">Mahendra L Seervi</maintainer>
 
   <license>BSD2</license>
   <author email="nikhil@botsync.sg">Nikhil Venkatesh</author>
-  
+
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>controller_manager</build_depend>
   <build_depend>diff_drive_controller</build_depend>
