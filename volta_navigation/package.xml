@@ -2,12 +2,15 @@
 <package>
   <name>volta_navigation</name>
   <version>0.0.0</version>
-
   <description>The volta_navigation package</description>
+
+
+  <author email="nikhil@botsync.co">Nikhil Venkatesh</author>
+  <author email="mahendra.l@botsync.co">Mahendra L Seervi</author>
+
   <maintainer email="mahendra.l@botsync.co">Mahendra L Seervi</maintainer>
 
   <license>BSD2</license>
-  <author email="nikhil@botsync.sg">Nikhil Venkatesh</author>
 
   <buildtool_depend>catkin</buildtool_depend>
 
