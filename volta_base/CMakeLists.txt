@@ -23,7 +23,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 catkin_package(
-INCLUDE_DIRS include
+INCLUDE_DIRS
 CATKIN_DEPENDS hardware_interface volta_msgs roscpp sensor_msgs
 DEPENDS Boost )
 
@@ -32,6 +32,6 @@ set_directory_properties(PROPERTIES COMPILE_OPTIONS "-std=c++11;")
 
 
 install(
-  DIRECTORY include launch
+  DIRECTORY launch
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
