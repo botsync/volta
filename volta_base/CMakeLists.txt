@@ -23,7 +23,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 catkin_package(
 INCLUDE_DIRS
-CATKIN_DEPENDS hardware_interface volta_msgs roscpp sensor_msgs
+CATKIN_DEPENDS
 DEPENDS Boost )
 
 include_directories(include ${Boost_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS})
