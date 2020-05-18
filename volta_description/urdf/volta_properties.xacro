@@ -47,16 +47,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <xacro:property name="base_l" value="0.4000"/>
     <xacro:property name="base_w" value="0.3200"/>
     <xacro:property name="base_h" value="0.2295"/>
-
-    <!--
-    <xacro:property name="base_ixx" value="0.3426"/>
-    <xacro:property name="base_ixy" value="0.0000"/>
-    <xacro:property name="base_ixz" value="-0.0503"/>
-    <xacro:property name="base_iyy" value="0.3917"/>
-    <xacro:property name="base_iyz" value="0.0000"/>
-    <xacro:property name="base_izz" value="0.3001"/>
-    -->
-
+    
     <xacro:property name="base_ixx" value="0.1815"/>
     <xacro:property name="base_ixy" value="0.0000"/>
     <xacro:property name="base_ixz" value="-0.0158"/>

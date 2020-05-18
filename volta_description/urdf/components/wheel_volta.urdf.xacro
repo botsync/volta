@@ -35,14 +35,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <!-- Wheel Link -->
         <link name="${wheel_prefix}_wheel">
             <visual>
-                <origin xyz="0 0 0" rpy="1.57 0 0"/>
+                <origin xyz="0 0 0" rpy="1.57159 0 0"/>
                 <geometry>
                     <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
                 </geometry>
                 <material name="black"/>
             </visual>
             <collision>
-                <origin xyz="0 0 0" rpy="1.57 0 0"/>
+                <origin xyz="0 0 0" rpy="1.57159 0 0"/>
                 <geometry>
                     <cylinder length="${wheel_width}" radius="${wheel_radius}" />
                 </geometry>
@@ -54,13 +54,22 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             </inertial>
         </link>
 
+        <gazebo reference="${wheel_prefix}_wheel">
+            <material>Gazebo/Black</material>
+            <mu1 value="1"/>
+            <mu2 value="1"/>
+            <kp value="10000000.0"></kp>
+            <kd value="1.0"></kd>
+            <fdir1 value="1 0 0"/>
+        </gazebo>
+
         <!-- Wheel Joint -->
         <joint name="${wheel_prefix}_wheel_joint" type="continuous">
             <parent link="base_link"/>
             <child link="${wheel_prefix}_wheel" />
             <xacro:insert_block name="joint_origin" />
             <axis xyz="0 1 0" />
-	    <anchor xyz="0 0 0"/>
+            <anchor xyz="0 0 0"/>
         </joint>
 
         <!-- Wheel Transmission -->
