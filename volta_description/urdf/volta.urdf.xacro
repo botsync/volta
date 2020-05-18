@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 
-Copyright (c) 2018, Rahul Nambiar
+Copyright (c) 2020, Botsync Pte. Ltd.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -11,7 +11,7 @@ modification, are permitted provided that the following conditions are met:
     * Redistributions in binary form must reproduce the above copyright
       notice, this list of conditions and the following disclaimer in the
       documentation and/or other materials provided with the distribution.
-    * Neither the name of the Botsync Pte. Ltd. nor the 
+    * Neither the name of the Botsync Pte. Ltd. nor the
       names of its contributors may be used to endorse or promote products
       derived from this software without specific prior written permission.
 
@@ -40,7 +40,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <xacro:arg name="robot_namespace" default="/" />
     <xacro:arg name="tf_pre" default="" />
     <xacro:arg name="lidar_enabled" default="true"/>
-    <xacro:arg name="imu_enabled" default="false"/>
+    <xacro:arg name="imu_enabled" default="true"/>
     <xacro:arg name="camera_enabled" default="true"/>
 
     <xacro:macro name="volta_robot">
@@ -70,7 +70,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 </geometry>
             </collision>
             <inertial>
-		<origin xyz ="-0.0223 0.0000 0.1018"/>
+                <origin xyz ="-0.0223 0.0000 0.1018"/>
                 <mass value="${base_mass}"/>
                 <inertia ixx="${base_ixx}" ixy="${base_ixy}" ixz="${base_ixz}" iyy="${base_iyy}" iyz="${base_iyz}" izz="${base_izz}"/>
             </inertial>
@@ -112,6 +112,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </joint>
         <gazebo reference="caster_front_left_link">
             <turnGravityOff>false</turnGravityOff>
+            <mu1 value="0.0"/>
+            <mu2 value="0.0"/>
         </gazebo>
 
         <link name="caster_front_right_link">
@@ -141,6 +143,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </joint>
         <gazebo reference="caster_front_right_link">
             <turnGravityOff>false</turnGravityOff>
+            <mu1 value="0.0"/>
+            <mu2 value="0.0"/>
         </gazebo>
 
         <link name="caster_rear_right_link">
@@ -170,6 +174,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </joint>
         <gazebo reference="caster_rear_right_link">
             <turnGravityOff>false</turnGravityOff>
+            <mu1 value="0.0"/>
+            <mu2 value="0.0"/>
         </gazebo>
 
         <link name="caster_rear_left_link">
@@ -199,6 +205,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </joint>
         <gazebo reference="caster_rear_left_link">
             <turnGravityOff>false</turnGravityOff>
+            <mu1 value="0.0"/>
+            <mu2 value="0.0"/>
         </gazebo>
 
         <gazebo>

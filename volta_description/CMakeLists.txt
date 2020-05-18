@@ -14,3 +14,8 @@ catkin_package(
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
+
+install(
+  DIRECTORY launch meshes rviz_params urdf
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)

@@ -2,35 +2,22 @@
 <launch>
 
     <group>
-        <node name="SerialComm" pkg="rosserial_python" type="serial_node.py" output="screen">
-          <param name="port" value="/dev/ttyUSB0" />
-          <param name="baud" value="115200" />
+        <node name="volta_hardware" pkg="volta_hardware" type="volta_base">
         </node>
-    </group>
 
-    <group>
-	<group>
-        <node name="volta_base_node" pkg="volta_base" type="volta_base">
-            <remap from="/tf" to="/firmware_tf"/>
-        </node>
-    </group>
         <arg name="model" default="$(find volta_description)/urdf/volta.xacro"/>
-
         <param name="robot_description" command="$(find xacro)/xacro.py --inorder $(arg model)"/>
-        
+
         <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
         <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
 
         <include file="$(find volta_control)/launch/control.launch" />
-
     </group>
 
     <group>
-        
         <include file="$(find volta_teleoperator)/launch/volta_teleoperator.launch" />
         <include file="$(find volta_localization)/launch/localization.launch"/>
         <node name="robot_pose_publisher" pkg="robot_pose_publisher" type="robot_pose_publisher"/>
-
     </group>
 
 </launch>

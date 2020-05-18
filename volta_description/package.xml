@@ -2,10 +2,15 @@
 <package format="2">
   <name>volta_description</name>
   <version>0.0.0</version>
-  <description>The magellan_description package</description>
+  <description>The volta_description package</description>
+  
+  <author email="nikhil@botsync.co">Nikhil Venkatesh</author>
+  <author email="mahendra.l@botsync.co">Mahendra L Seervi</author>
 
-  <maintainer email="erian@todo.todo">erian</maintainer>
-  <license>TODO</license>
+  <maintainer email="mahendra.l@botsync.co">Mahendra L Seervi</maintainer>
+
+  <license>BSD2</license>
+
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>roscpp</build_depend>
   <build_depend>rospy</build_depend>
