@@ -16,7 +16,6 @@ find_package(catkin REQUIRED COMPONENTS
   imu_filter_madgwick
   laser_filters
   controller_manager
-  hardware_interface
   diagnostic_updater
   robot_pose_publisher
   volta_msgs
