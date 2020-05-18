@@ -9,6 +9,8 @@ ROS packages used to to run volta with hardware
 * volta_navigation - Contains files required for running gmapping, amcl and move_base ROS packages.
 * volta_teleoperation - Control the robot using keyboard or Joystick.
 
+### For volta to use in Gazebo simulation - https://github.com/botsync/volta_simulation
+
 ## Steps to Launch Volta :
 
 ### 1. Mapping an environment with Volta
