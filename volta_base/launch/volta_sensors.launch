@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <launch>
 
-    <arg name="intel_D435_camera" default="false"/>
-    <arg name="rplidar_a3" default="false"/>
+    <arg name="orbbec_camera" default="false"/>
+    <arg name="rplidar" default="false"/>
     <arg name="um7_imu" default="false"/>
 
     <group if="$(arg um7_imu)">
@@ -16,14 +16,22 @@
     </group>
 
     <!-- Include Intel D435 Driver -->
-    <group if="$(arg intel_D435_camera)">
-
+    <group if="$(arg orbbec_camera)">
+      <include file="$(find astra_camera)/launch/astrapro.launch"></include>
     </group>
 
     <!-- Include RPLidar A3 Driver -->
 
     <group if="$(arg rplidar_a3)">
-
+      <node name="lidar_1" pkg="rplidar_ros" type="rplidarNode" output="screen" respawn="true">
+        <param name="serial_port" vaule="/dev/rplidar"/>
+        <param name="serial_baudrate" value="256000"/>
+        <param name="frame_id" value="lidar"/>
+        <param name="calibrate_time" value="true"/>
+        <param name="publish_intensity" value="true"/>
+        <param name="publish_multiecho" value="false"/>
+        <param name="angle_min" value="-2.35619"/>
+        <param name="angle_max" value="2.35619"/>
     </group>
 
 </launch>
