@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <launch>
 
-    <arg name="orbbec_camera" default="false"/>
-    <arg name="rplidar" default="false"/>
-    <arg name="um7_imu" default="false"/>
+    <arg name="orbbec_camera" default="true"/>
+    <arg name="rplidar_a3" default="true"/>
+    <arg name="um7_imu" default="true"/>
 
     <group if="$(arg um7_imu)">
         <node pkg="um7" type="um7_driver" name="imu_driver">
-            <param name="port" value="/dev/IMU"/>
+            <param name="port" value="/dev/ttyUSB2"/>
             <param name="mag_updates" value="false"/>
             <param name="tf_ned_to_enu" value="false"/>
             <param name="frame_id" value="imu"/>
@@ -24,14 +24,14 @@
 
     <group if="$(arg rplidar_a3)">
       <node name="lidar_1" pkg="rplidar_ros" type="rplidarNode" output="screen" respawn="true">
-        <param name="serial_port" vaule="/dev/rplidar"/>
+        <param name="serial_port" value="/dev/rplidar"/>
         <param name="serial_baudrate" value="256000"/>
         <param name="frame_id" value="lidar"/>
-        <param name="calibrate_time" value="true"/>
-        <param name="publish_intensity" value="true"/>
-        <param name="publish_multiecho" value="false"/>
-        <param name="angle_min" value="-2.35619"/>
-        <param name="angle_max" value="2.35619"/>
+        <param name="scan_mode"           type="string" value="Sensitivity"/>
+        <remap from="scan" to="scan_filtered"/>
+     </node>
     </group>
 
 </launch>
+
+
