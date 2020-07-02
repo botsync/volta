@@ -15,7 +15,7 @@
         </node>
     </group>
 
-    <!-- Include Orbbec Camera -->
+    <!-- Include Orbbec Camera Driver -->
     <group if="$(arg orbbec_camera)">
       <include file="$(find astra_camera)/launch/astrapro.launch"></include>
     </group>
