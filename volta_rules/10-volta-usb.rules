@@ -1,0 +1,9 @@
+# set the udev rule , make the device_port be fixed by the peripherals
+##imu
+##ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="ea60", ATTRS{product}=="TTL232R-3V3", MODE:="0777", SYMLINK+="imu"
+
+##imu
+ACTION=="add", ATTRS{serial}=="00EB7217", SUBSYSTEM=="usb", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", ATTRS{product}=="CP2102 USB to UART Bridge Controller", MODE:="0777", SYMLINK+="imu"
+
+##RPlidar
+ACTION=="add", ATTRS{serial}=="0001", SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", ATTRS{product}=="CP2102 USB to UART Bridge Controller", MODE:="0777", SYMLINK+="rplidar"

@@ -7,7 +7,7 @@
 
     <group if="$(arg um7_imu)">
         <node pkg="um7" type="um7_driver" name="imu_driver">
-            <param name="port" value="/dev/ttyUSB2"/>
+            <param name="port" value="/dev/imu"/>
             <param name="mag_updates" value="false"/>
             <param name="tf_ned_to_enu" value="false"/>
             <param name="frame_id" value="imu"/>
@@ -35,5 +35,3 @@
     </group>
 
 </launch>
-
-

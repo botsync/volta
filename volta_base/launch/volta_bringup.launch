@@ -4,6 +4,7 @@
     <group>
         <node name="volta_hardware" pkg="volta_hardware" type="volta_base">
         </node>
+        <node name="volta_hardware_motor" pkg="volta_hardware" type="rpmSend"/>
 
         <arg name="model" default="$(find volta_description)/urdf/volta.xacro"/>
         <param name="robot_description" command="$(find xacro)/xacro.py --inorder $(arg model)"/>

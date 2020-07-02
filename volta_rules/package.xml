@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <name>volta_rules</name>
+  <version>0.0.0</version>
+  <description>The volta_rules package</description>
+
+  <author email="nikhil@botsync.co">Nikhil Venkatesh</author>
+  <author email="mahendra.l@botsync.co">Mahendra L Seervi</author>
+  <author email="taik0008@e.ntu.edu.sg">Kai Jie</author>
+
+  <maintainer email="mahendra.l@botsync.co">Mahendra L Seervi</maintainer>
+
+  <license>BSD2</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+
+  <export>
+  </export>
+</package>

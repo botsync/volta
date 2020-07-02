@@ -8,6 +8,8 @@ ROS packages used to to run volta with hardware
 * volta_msgs - contains ROS messages specific to volta such as the power board messages,..etc
 * volta_navigation - Contains files required for running gmapping, amcl and move_base ROS packages.
 * volta_teleoperation - Control the robot using keyboard or Joystick.
+* volta_rules - Contains rules to be installed to ensure that the USB peripherals are binded correctly
+
 
 ### For volta to use in Gazebo simulation - https://github.com/botsync/volta_simulation
 

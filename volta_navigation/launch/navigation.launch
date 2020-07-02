@@ -13,7 +13,7 @@
     <arg name="amcl_init_pose_x" default="0"/>
     <arg name="amcl_init_pose_y" default="0"/>
     <arg name="amcl_init_pose_yaw" default="0"/>
-    <arg name="map_file" default="$(find volta_navigation)/maps/map.yaml"/>
+    <arg name="map_file" default="$(find volta_navigation)/maps/WF_3.yaml"/>
 
     <node pkg="amcl" type="amcl" name="amcl" unless="$(arg gmapping)">
         <rosparam file="$(find volta_navigation)/config/amcl.yaml" command="load"/>
