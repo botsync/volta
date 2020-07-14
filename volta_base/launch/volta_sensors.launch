@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <launch>
-
-    <arg name="orbbec_camera" default="true"/>
-    <arg name="rplidar_a3" default="true"/>
+    <arg name="orbbec_camera" default="false"/>
+    <arg name="rplidar_a3" default="false"/>
     <arg name="um7_imu" default="true"/>
+    <arg name="hokuyo_lidar" default="true"/>
 
     <group if="$(arg um7_imu)">
         <node pkg="um7" type="um7_driver" name="imu_driver">
@@ -13,6 +13,22 @@
             <param name="frame_id" value="imu"/>
             <remap from="imu" to="imu"/>
         </node>
+    </group>
+
+    <group if="$(arg hokuyo_lidar)">
+      <node name="lidar1" pkg="urg_node" type="urg_node" output="screen" respawn="true">
+        <param name="ip_address" value="192.168.1.11"/>
+        <param name="serial_port" value=""/>
+        <param name="serial_baud" value="115200"/>
+        <param name="frame_id" value="lidar"/>
+        <param name="calibrate_time" value="true"/>
+        <param name="publish_intensity" value="true"/>
+        <param name="publish_multiecho" value="false"/>
+        <param name="angle_min" value="-0.5890486"/>
+        <param name="angle_max" value="0.5890486"/>
+        <remap from="scan" to="scan_filtered"/>
+      </node>
+
     </group>
 
     <!-- Include Orbbec Camera Driver -->
