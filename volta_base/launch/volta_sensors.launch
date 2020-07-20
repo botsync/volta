@@ -1,29 +1,55 @@
 <?xml version="1.0"?>
 <launch>
-
-    <arg name="intel_D435_camera" default="false"/>
+    <arg name="orbbec_camera" default="false"/>
     <arg name="rplidar_a3" default="false"/>
-    <arg name="um7_imu" default="false"/>
+    <arg name="um7_imu" default="true"/>
+    <arg name="hokuyo_lidar" default="true"/>
 
+    
+    <!-- IMU UM7 Driver can be obtain by running sudo apt-get install ros-kinetic-um7 -->
     <group if="$(arg um7_imu)">
         <node pkg="um7" type="um7_driver" name="imu_driver">
-            <param name="port" value="/dev/IMU"/>
+            <param name="port" value="/dev/imu"/>
             <param name="mag_updates" value="false"/>
             <param name="tf_ned_to_enu" value="false"/>
             <param name="frame_id" value="imu"/>
             <remap from="imu" to="imu"/>
         </node>
     </group>
-
-    <!-- Include Intel D435 Driver -->
-    <group if="$(arg intel_D435_camera)">
+    <!-- Hokuyo Lidar Driver can be found at https://github.com/ros-drivers/urg_node.git -->
+    <group if="$(arg hokuyo_lidar)">
+      <node name="lidar1" pkg="urg_node" type="urg_node" output="screen" respawn="true">
+        <param name="ip_address" value="192.168.1.11"/>
+        <param name="serial_port" value=""/>
+        <param name="serial_baud" value="115200"/>
+        <param name="frame_id" value="lidar"/>
+        <param name="calibrate_time" value="true"/>
+        <param name="publish_intensity" value="true"/>
+        <param name="publish_multiecho" value="false"/>
+        <param name="angle_min" value="-0.5890486"/>
+        <param name="angle_max" value="0.5890486"/>
+        <remap from="scan" to="scan_filtered"/>
+      </node>
 
     </group>
 
-    <!-- Include RPLidar A3 Driver -->
+    <!-- Orbbec Camera Driver can be found at https://github.com/orbbec/ros_astra_camera -->
+    <group if="$(arg orbbec_camera)">
+      <include file="$(find astra_camera)/launch/astrapro.launch"></include>
+    </group>
+
+    <!-- RPLidar Driver can be found at https://github.com/Slamtec/rplidar_ros.git  -->
 
     <group if="$(arg rplidar_a3)">
-
+      <node name="lidar_1" pkg="rplidar_ros" type="rplidarNode" output="screen" respawn="true">
+        <param name="serial_port" value="/dev/rplidar"/>
+        <param name="serial_baudrate" value="256000"/>
+        <param name="frame_id" value="lidar"/>
+        <param name="scan_mode"           type="string" value="Sensitivity"/>
+        <param name="inverted"            type="bool"   value="false"/>
+        <param name="angle_compensate"    type="bool"   value="true"/>
+        <remap from="scan" to="scan_filtered"/>
+     </node>
     </group>
 
 </launch>

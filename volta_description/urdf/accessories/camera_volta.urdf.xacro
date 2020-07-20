@@ -56,6 +56,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             </inertial>
         </link>
 
+        <joint name="camera_transformation_joint" type="fixed">
+               <origin xyz="0 0 0" rpy="0 0 0 "/>
+               <parent link="${frame}"/>
+               <child link="camera_link"/>
+        </joint>
+
+        <link name="camera_link"> </link>
+
         <gazebo reference="${frame}">
             <sensor type="camera" name="camera">
                 <update_rate>${update_rate}</update_rate>
@@ -76,20 +84,32 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                       <stddev>0.007</stddev>
                     </noise>
                 </camera>
-                <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+                <plugin name="camera_controller" filename="libgazebo_ros_openni_kinetic.so">
                     <!-- <robotNamespace>${robot_namespace}</robotNamespace> -->
+                    <baseline>0.2</baseline>
                     <alwaysOn>true</alwaysOn>
-                    <updateRate>${update_rate}</updateRate>
-                    <cameraName>${frame}</cameraName>
-                    <imageTopicName>${topic}</imageTopicName>
-                    <cameraInfoTopicName>${info_topic}</cameraInfoTopicName>
-                    <frameName>${frame}</frameName>
-                    <hackBaseline>0.07</hackBaseline>
-                    <distortionK1>0.0</distortionK1>
-                    <distortionK2>0.0</distortionK2>
-                    <distortionK3>0.0</distortionK3>
-                    <distortionT1>0.0</distortionT1>
-                    <distortionT2>0.0</distortionT2>
+                        <updateRate>${update_rate}</updateRate>
+                        <cameraName>${frame}</cameraName>
+                        <frameName>camera_link</frameName>
+                    <imageTopicName>${topic}/color/image_raw</imageTopicName>
+                    <cameraInfoTopicName>${topic}/color/camera_info</cameraInfoTopicName>
+                    <depthImageTopicName>/${topic}/depth/image_raw</depthImageTopicName>
+                    <depthImageInfoTopicName>/${topic}/depth/camera_info</depthImageInfoTopicName>
+                    <pointCloudTopicName>/${topic}/depth/points</pointCloudTopicName>
+                    <pointCloudCutoff>0.5</pointCloudCutoff>
+                    <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
+                        <hackBaseline>0.07</hackBaseline>
+                        <distortionK1>0.0</distortionK1>
+                        <distortionK2>0.0</distortionK2>
+                        <distortionK3>0.0</distortionK3>
+                        <distortionT1>0.0</distortionT1>
+                        <distortionT2>0.0</distortionT2>
+                    <CxPrime>0</CxPrime>
+                    <Cx>0</Cx>
+                    <Cy>0</Cy>
+                    <focalLength>0</focalLength>
+                    <hackBaseline>0</hackBaseline>
+
                 </plugin>
             </sensor>
         </gazebo>
