@@ -5,6 +5,8 @@
     <arg name="um7_imu" default="true"/>
     <arg name="hokuyo_lidar" default="true"/>
 
+    
+    <!-- IMU UM7 Driver can be obtain by running sudo apt-get install ros-kinetic-um7 -->
     <group if="$(arg um7_imu)">
         <node pkg="um7" type="um7_driver" name="imu_driver">
             <param name="port" value="/dev/imu"/>
@@ -14,7 +16,7 @@
             <remap from="imu" to="imu"/>
         </node>
     </group>
-
+    <!-- Hokuyo Lidar Driver can be found at https://github.com/ros-drivers/urg_node.git -->
     <group if="$(arg hokuyo_lidar)">
       <node name="lidar1" pkg="urg_node" type="urg_node" output="screen" respawn="true">
         <param name="ip_address" value="192.168.1.11"/>
@@ -31,12 +33,12 @@
 
     </group>
 
-    <!-- Include Orbbec Camera Driver -->
+    <!-- Orbbec Camera Driver can be found at https://github.com/orbbec/ros_astra_camera -->
     <group if="$(arg orbbec_camera)">
       <include file="$(find astra_camera)/launch/astrapro.launch"></include>
     </group>
 
-    <!-- Include RPLidar A3 Driver -->
+    <!-- RPLidar Driver can be found at https://github.com/Slamtec/rplidar_ros.git  -->
 
     <group if="$(arg rplidar_a3)">
       <node name="lidar_1" pkg="rplidar_ros" type="rplidarNode" output="screen" respawn="true">
