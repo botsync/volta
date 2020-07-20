@@ -2,7 +2,7 @@
 rossetup=/opt/ros/kinetic/setup.bash
 rossetup2=~/catkin_volta/devel/setup.bash
 launcher="roslaunch volta_base volta_bringup.launch"
-pathfile=/home/magellan_250_v1
+pathfile=/home/volta
 pathfile2=/lib/systemd/system
 cat <<EOF >$pathfile/volta_start.sh
 #!/bin/bash
