@@ -56,7 +56,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             </inertial>
         </link>
 
-        <joint name="trans_joint" type="fixed">
+        <joint name="camera_transformation_joint" type="fixed">
                <origin xyz="0 0 0" rpy="0 0 0 "/>
                <parent link="${frame}"/>
                <child link="camera_link"/>
