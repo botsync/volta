@@ -18,7 +18,6 @@
     <group>
         <include file="$(find volta_teleoperator)/launch/volta_teleoperator.launch" />
         <include file="$(find volta_localization)/launch/localization.launch"/>
-        <node name="robot_pose_publisher" pkg="robot_pose_publisher" type="robot_pose_publisher"/>
     </group>
 
 </launch>

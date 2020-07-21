@@ -17,8 +17,6 @@ find_package(catkin REQUIRED COMPONENTS
   laser_filters
   controller_manager
   diagnostic_updater
-  robot_pose_publisher
-  volta_msgs
 )
 
 catkin_package(
