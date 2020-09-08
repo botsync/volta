@@ -7,7 +7,7 @@ echo "up the following usb connection as /dev/mcu"
 echo "up the following usb connection as /dev/imu"
 echo ""
 
-sudo cp `rospack find volta_rules`/10-volta-usb.rules /etc/udev/rules.d
+sudo cp `rospack find volta_rules`/rplidar.rules /etc/udev/rules.d
 sudo cp `rospack find volta_rules`/mcu.rules /etc/udev/rules.d
 sudo cp `rospack find volta_rules`/imu.rules /etc/udev/rules.d
 

@@ -5,3 +5,12 @@ GlobalPlanner:
   orientation_mode: 2
   publish_potential: true
   use_dijkstra: true
+
+SBPLLatticePlanner:
+  environment_type: XYThetaLattice
+  planner_type: ARAPlanner
+  allocated_time: 10.0
+  initial_epsilon: 50.0
+  forward_search: true
+  nominalvel_mpersecs: 1.0
+  timetoturn45degsinplace_secs: 1.0

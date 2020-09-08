@@ -1,19 +1,17 @@
 <?xml version="1.0"?>
 <package>
   <name>volta_navigation</name>
-  <version>0.0.0</version>
+  <version>1.0.0</version>
   <description>The volta_navigation package</description>
-
 
   <author email="nikhil@botsync.co">Nikhil Venkatesh</author>
   <author email="mahendra.l@botsync.co">Mahendra L Seervi</author>
 
   <maintainer email="mahendra.l@botsync.co">Mahendra L Seervi</maintainer>
 
-  <license>BSD2</license>
+  <license>BSD</license>
 
   <buildtool_depend>catkin</buildtool_depend>
-
   <run_depend>amcl</run_depend>
   <run_depend>move_base</run_depend>
   <run_depend>gmapping</run_depend>

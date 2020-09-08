@@ -23,7 +23,6 @@ include_directories(
 )
 
 add_library(volta_joy_teleop src/joy_teleop.cpp)
-#add_dependencies(volta_joy_teleop volta_teleoperator_gencpp)
 add_executable(volta_joy_teleop_node src/joy_teleop_node.cpp)
 target_link_libraries(volta_joy_teleop_node volta_joy_teleop ${catkin_LIBRARIES})
 

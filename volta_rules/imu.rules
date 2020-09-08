@@ -1,3 +1,3 @@
+# set the udev rule , make the device_port be fixed by the peripherals
 
-##imu
-KERNEL=="ttyUSB*",ATTRS{serial}=="00EB7217", MODE:="0777", SYMLINK+="imu"
+KERNEL=="ttyUSB*", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", ATTRS{product}=="USB2.0-Serial", MODE:="0777", SYMLINK+="imu"
