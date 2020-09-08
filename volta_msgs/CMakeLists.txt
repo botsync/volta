@@ -11,6 +11,7 @@ add_message_files(
   FILES
   RPM.msg
   Diagnostics.msg
+  Table.msg
   )
 
 generate_messages(DEPENDENCIES std_msgs)
