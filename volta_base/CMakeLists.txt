@@ -4,29 +4,11 @@ project(volta_base)
 add_compile_options(-std=c++11)
 
 find_package(catkin REQUIRED COMPONENTS
-  geometry_msgs
-  roscpp
-  rospy
-  rosserial_python
-  sensor_msgs
-  std_msgs
-  tf
-  um7
-  imu_transformer
-  imu_filter_madgwick
-  laser_filters
-  controller_manager
-  diagnostic_updater
 )
 
-catkin_package(
-INCLUDE_DIRS
-CATKIN_DEPENDS
-DEPENDS Boost )
+catkin_package()
 
-include_directories(include ${Boost_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS})
 set_directory_properties(PROPERTIES COMPILE_OPTIONS "-std=c++11;")
-
 
 install(
   DIRECTORY launch
