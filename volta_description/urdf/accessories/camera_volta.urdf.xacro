@@ -56,14 +56,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             </inertial>
         </link>
 
-        <joint name="camera_transformation_joint" type="fixed">
-               <origin xyz="0 0 0" rpy="0 0 0 "/>
-               <parent link="${frame}"/>
-               <child link="camera_link"/>
-        </joint>
-
-        <link name="camera_link"> </link>
-
         <gazebo reference="${frame}">
             <sensor type="camera" name="camera">
                 <update_rate>${update_rate}</update_rate>
@@ -90,7 +82,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                     <alwaysOn>true</alwaysOn>
                         <updateRate>${update_rate}</updateRate>
                         <cameraName>${frame}</cameraName>
-                        <frameName>camera_link</frameName>
+                        <frameName>${frame}</frameName>
                     <imageTopicName>${topic}/color/image_raw</imageTopicName>
                     <cameraInfoTopicName>${topic}/color/camera_info</cameraInfoTopicName>
                     <depthImageTopicName>/${topic}/depth/image_raw</depthImageTopicName>
