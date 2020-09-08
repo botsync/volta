@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <package>
   <name>volta_base</name>
-  <version>0.0.0</version>
+  <version>6.0.0</version>
   <description>The volta_base package</description>
+
 
   <author email="nikhil@botsync.co">Nikhil Venkatesh</author>
   <author email="mahendra.l@botsync.co">Mahendra L Seervi</author>
@@ -10,15 +11,7 @@
   <maintainer email="mahendra.l@botsync.co">Mahendra L Seervi</maintainer>
 
   <license>BSD</license>
-
   <buildtool_depend>catkin</buildtool_depend>
-
-  <build_depend>um7</build_depend>
-  <build_depend>robot_pose_publisher</build_depend>
-
-  <run_depend>um7</run_depend>
-  <run_depend>robot_pose_publisher</run_depend>
-
   <export>
   </export>
 </package>
