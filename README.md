@@ -1,4 +1,5 @@
 # Volta
+Version:1.0.0
 ROS packages used to to run volta with hardware
 
 * volta_base - Package contains files to connect to the robot and run the sensor driver.
@@ -10,9 +11,6 @@ ROS packages used to to run volta with hardware
 * volta_teleoperation - Control the robot using keyboard or Joystick.
 * volta_rules - Contains rules that ensures the USB peripherals are binded correctly
 
-
-### For volta to use in Gazebo simulation - https://github.com/botsync/volta_simulation
-
 ## Steps to Launch Volta :
 
 ### 1. Mapping an environment with Volta
@@ -22,7 +20,7 @@ $ roslaunch volta_base volta_bringup.launch
 ```
 * Launch the sensors node by running:    
 ```
-$ roslaunch volta_base volta_bringup.launch   
+$ roslaunch volta_base volta_sensors.launch   
 ```
 * To perform the mapping, launch the navigation package by running   
 ```
@@ -41,7 +39,7 @@ $ roslaunch volta_teleoperator teleoperator.launch keyboard:=true
 
 * Once the mapping of the entire environment is completed, the map can be saved by running:     
 ```
-$ roslaunch map_server map_saver –f <filename>
+$ rosrun map_server map_saver –f <filename>
 ```
 
 ### 3. Navigation with Volta
