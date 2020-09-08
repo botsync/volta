@@ -1,49 +1,49 @@
 <?xml version="1.0"?>
 <launch>
 
-    <arg name="intel_D435_camera" default="true"/>
-    <arg name="orbbec_camera" default="false"/>
+    <arg name="chrobotics_um7_imu" default="false"/>
+    <arg name="wit_wt901c_imu" default="false"/>
+    <arg name="intel_D435i_camera" default="true"/>
+    <arg name="orbbec_astra_pro_camera" default="false"/>
+    <arg name="hokuyo_ust10lx_lidar" default="false"/>
     <arg name="rplidar_a3" default="true"/>
-    <arg name="hokuyo_lidar" default="false"/>
-    <arg name="wit_imu" default="false"/>
-    <arg name="um7_imu" default="false"/>
 
-    <!-- IMU UM7 Driver can be obtain by running sudo apt-get install ros-kinetic-um7 -->
-    <group if="$(arg um7_imu)">
-        <node pkg="um7" type="um7_driver" name="imu_driver">
-            <param name="port" value="/dev/imu"/>
-            <param name="mag_updates" value="false"/>
-            <param name="tf_ned_to_enu" value="false"/>
-            <param name="frame_id" value="imu"/>
-            <remap from="imu" to="imu"/>
-        </node>
+    <!--Download ROS package from here - https://github.com/ros-drivers/um7-->
+    <group if="$(arg chrobotics_um7_imu)">
+      <node pkg="um7" type="um7_driver" name="imu_driver">
+        <param name="port" value="/dev/imu"/>
+        <param name="mag_updates" value="false"/>
+        <param name="tf_ned_to_enu" value="false"/>
+        <param name="frame_id" value="imu"/>
+        <remap from="imu" to="imu"/>
+      </node>
     </group>
 
-    <!-- Wit IMU Driver -->
-    <group if="$(arg wit_imu)">
-        <node pkg="wit_imu_driver" type="wit_imu_driver" name="wit_imu_driver">
-            <param name="device" value="/dev/imu"/>
-            <param name="frame_id" value="imu"/>
-            <remap from="data_raw" to="imu/data"/>
-        </node>
+    <!-- Download ROS package from here - https://github.com/botsync/wit_imu_driver-->
+    <group if="$(arg wit_wt901c_imu)">
+      <node pkg="wit_imu_driver" type="wit_imu_driver" name="wit_imu_driver">
+        <param name="device" value="/dev/imu"/>
+        <param name="frame_id" value="imu"/>
+        <remap from="data_raw" to="imu/data"/>
+      </node>
     </group>
 
-    <!-- Include Intel D435 Driver -->
-    <group if="$(arg intel_D435_camera)">
-        <include file="$(find realsense2_camera)/launch/rs_camera.launch">
-            <arg name="filters" value="colorizer,pointcloud,disparity,spatial,temporal,decimation"/>
-            <arg name="camera"  value="camera"/>
-            <arg name="tf_prefix" value="camera"/>
-        </include>
+    <!--Download ROS package from here - https://github.com/IntelRealSense/realsense-ros-->
+    <group if="$(arg intel_D435i_camera)">
+      <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+        <arg name="filters" value="colorizer,pointcloud,disparity,spatial,temporal,decimation"/>
+        <arg name="camera"  value="camera"/>
+        <arg name="tf_prefix" value="camera"/>
+      </include>
     </group>
 
-    <!-- Orbbec Camera Driver can be found at https://github.com/orbbec/ros_astra_camera -->
-    <group if="$(arg orbbec_camera)">
+    <!-- Download ROS package from here - https://github.com/orbbec/ros_astra_camera-->
+    <group if="$(arg orbbec_astra_pro_camera)">
       <include file="$(find astra_camera)/launch/astrapro.launch"></include>
     </group>
 
-    <!-- Hokuyo Lidar Driver can be found at https://github.com/ros-drivers/urg_node.git -->
-    <group if="$(arg hokuyo_lidar)">
+    <!-- Download ROS package from here - https://github.com/ros-drivers/urg_node-->
+    <group if="$(arg hokuyo_ust10lx_lidar)">
       <node name="lidar1" pkg="urg_node" type="urg_node" output="screen" respawn="true">
         <param name="ip_address" value="192.168.1.11"/>
         <param name="serial_port" value=""/>
@@ -52,23 +52,23 @@
         <param name="calibrate_time" value="true"/>
         <param name="publish_intensity" value="true"/>
         <param name="publish_multiecho" value="false"/>
-        <param name="angle_min" value="-0.5890486"/>
-        <param name="angle_max" value="0.5890486"/>
+        <param name="angle_min" value="-1.57079"/>
+        <param name="angle_max" value="1.57079"/>
         <remap from="scan" to="scan_filtered"/>
       </node>
     </group>
 
-    <!-- Include RPLidar A3 Driver -->
+    <!-- Download ROS package from here - https://github.com/Slamtec/rplidar_ros-->
     <group if="$(arg rplidar_a3)">
-        <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
-          <param name="serial_port"         type="string" value="/dev/rplidar"/>
-          <param name="serial_baudrate"     type="int"    value="256000"/><!--A3 -->
-          <param name="frame_id"            type="string" value="lidar"/>
-          <param name="inverted"            type="bool"   value="false"/>
-          <param name="angle_compensate"    type="bool"   value="true"/>
-          <param name="scan_mode"           type="string" value="Sensitivity"/>
-          <remap from="scan" to="scan_filtered"/>
-        </node>
+      <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+        <param name="serial_port"         type="string" value="/dev/rplidar"/>
+        <param name="serial_baudrate"     type="int"    value="256000"/>
+        <param name="frame_id"            type="string" value="lidar"/>
+        <param name="inverted"            type="bool"   value="false"/>
+        <param name="angle_compensate"    type="bool"   value="true"/>
+        <param name="scan_mode"           type="string" value="Sensitivity"/>
+        <remap from="scan" to="scan_filtered"/>
+      </node>
     </group>
 
 </launch>

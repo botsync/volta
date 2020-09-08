@@ -1,11 +1,11 @@
-enable_button: 1
+enable_button: 0
 stop_button: 2
 e_stop_button: 3
 linear_speed_axis: 1
 angular_speed_axis: 0
 
 max_linear_speed: 0.5
-max_angular_speed: 1.0
+max_angular_speed: 0.5
 
 enable_e_stop: 1
 
