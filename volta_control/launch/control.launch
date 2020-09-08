@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <launch>
-	<rosparam command="load" file="$(find volta_control)/config/control.yaml" />
-	<node name="base_controller_spawner" pkg="controller_manager" type="spawner"
+		<rosparam command="load" file="$(find volta_control)/config/control.yaml" />
+
+		<node name="base_controller_spawner" pkg="controller_manager" type="spawner"
         args="volta_joint_publisher volta_base_controller">
     </node>
 

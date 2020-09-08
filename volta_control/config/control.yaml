@@ -13,8 +13,8 @@ volta_base_controller:
   base_frame_id: base_link
   enable_odom_tf: false
   estimate_velocity_from_position: false
-  # Wheel_separation changes with respect to different robots 
-  wheel_separation_multiplier: 0.88
+  wheel_separation_multiplier: 1.0
+  wheel_separation: 0.2575
   wheel_radius_multiplier    : 1.0
   linear:
     x:
