@@ -41,7 +41,7 @@ $ roslaunch volta_teleoperator teleoperator.launch keyboard:=true
 
 * Once the mapping of the entire environment is completed, the map can be saved by running:     
 ```
-$ roslaunch map_server map_saver –f <filename>
+$ rosrun map_server map_saver –f <filename>
 ```
 
 ### 3. Navigation with Volta
