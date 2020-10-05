@@ -18,11 +18,11 @@ ROS packages used to to run volta with hardware
 ### 1. Mapping an environment with Volta
 * Launch the move_base node by running:   
 ```
-$ roslaunch volta_base volta_bringup.launch   
+$ roslaunch volta_base bringup.launch   
 ```
 * Launch the sensors node by running:    
 ```
-$ roslaunch volta_base volta_bringup.launch   
+$ roslaunch volta_base sensors.launch   
 ```
 * To perform the mapping, launch the navigation package by running   
 ```
