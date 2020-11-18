@@ -2,6 +2,6 @@
 Changelog for package volta_base
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.0 (2020-11-18)
+------------------
 * First Release
