@@ -8,8 +8,8 @@
   <author email="mahendra.l@botsync.co">Mahendra L Seervi</author>
 
   <maintainer email="mahendra.l@botsync.co">Mahendra L Seervi</maintainer>
-  
-  <license>BSD2</license>
+
+  <license>BSD-3-Clause</license>
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>controller_manager</build_depend>
