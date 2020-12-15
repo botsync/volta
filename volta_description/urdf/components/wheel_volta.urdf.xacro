@@ -35,30 +35,30 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <!-- Wheel Link -->
         <link name="${wheel_prefix}_wheel">
             <visual>
-                <origin xyz="0 0 0" rpy="1.57159 0 0"/>
+                <origin xyz="0 0 0" rpy="1.570796327 0 0"/>
                 <geometry>
                     <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
                 </geometry>
-                <material name="black"/>
+                <material name="red"/>
             </visual>
             <collision>
-                <origin xyz="0 0 0" rpy="1.57159 0 0"/>
+                <origin xyz="0 0 0" rpy="1.570796327 0 0"/>
                 <geometry>
                     <cylinder length="${wheel_width}" radius="${wheel_radius}" />
                 </geometry>
             </collision>
             <inertial>
-                <mass value="0.050" />
+                <mass value="${wheel_mass}" />
                 <origin xyz="0 0 0" rpy="0 0 0" />
                 <inertia  ixx="${wheel_ixx}" ixy="${wheel_ixy}" ixz="${wheel_ixz}" iyy="${wheel_iyy}" iyz="${wheel_iyz}" izz="${wheel_izz}" />
             </inertial>
         </link>
 
         <gazebo reference="${wheel_prefix}_wheel">
-            <material>Gazebo/Black</material>
-            <mu1 value="1"/>
-            <mu2 value="1"/>
-            <kp value="10000000.0"></kp>
+            <material>Gazebo/Red</material>
+            <mu1 value="1400"/>
+            <mu2 value="600"/>
+            <kp value="3100000.0"></kp>
             <kd value="1.0"></kd>
             <fdir1 value="1 0 0"/>
         </gazebo>
@@ -69,7 +69,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <child link="${wheel_prefix}_wheel" />
             <xacro:insert_block name="joint_origin" />
             <axis xyz="0 1 0" />
-            <anchor xyz="0 0 0"/>
         </joint>
 
         <!-- Wheel Transmission -->

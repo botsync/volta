@@ -50,4 +50,7 @@ ros::Subscriber joy_subscriber;
 ros::Publisher cmd_vel_pub;
 ros::Publisher e_stop_pub;
 
+bool dead_man = false;
+geometry_msgs::Twist cmd_to_send;
+
 void joy_callback(const sensor_msgs::Joy::ConstPtr& joy);

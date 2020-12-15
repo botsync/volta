@@ -1,3 +1,0 @@
-# set the udev rule , make the device_port be fixed by the peripherals
-
-KERNEL=="ttyUSB*", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", ATTRS{product}=="CP2102 USB to UART Bridge Controller", MODE:="0777", SYMLINK+="rplidar"

@@ -11,6 +11,6 @@ catkin_package()
 set_directory_properties(PROPERTIES COMPILE_OPTIONS "-std=c++11;")
 
 install(
-  DIRECTORY launch
+  DIRECTORY launch config
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
