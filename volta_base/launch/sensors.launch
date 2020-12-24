@@ -2,8 +2,8 @@
 <launch>
 
     <arg name="chrobotics_um7_imu" default="false"/>
-    <arg name="wit_wt901c_imu" default="false"/>
-    <arg name="intel_D435i_camera" default="true"/>
+    <arg name="wit_wt901c_imu" default="true"/>
+    <arg name="intel_D435i_camera" default="false"/>
     <arg name="orbbec_astra_pro_camera" default="false"/>
     <arg name="hokuyo_ust10lx_lidar" default="false"/>
     <arg name="rplidar_a3" default="true"/>
@@ -24,6 +24,7 @@
       <node pkg="wit_imu_driver" type="wit_imu_driver" name="wit_imu_driver">
         <param name="device" value="/dev/imu"/>
         <param name="frame_id" value="imu"/>
+        <param name="baud" value="9600"/>
         <remap from="data_raw" to="imu/data"/>
       </node>
     </group>

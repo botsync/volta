@@ -61,5 +61,15 @@ int main(int argc, char** argv) {
         e_stop_pub = nh.advertise<std_msgs::Bool>(e_stop_pub_topic, 1);
     }
 
-    ros::spin();
+    ros::Rate r(5);
+    while (ros::ok()) {
+        if (dead_man) {
+            cmd_vel_pub.publish(cmd_to_send);
+        }
+        r.sleep();
+        ros::spinOnce();
+    }
+
+    return 0;
+    //ros::spin();
 }

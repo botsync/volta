@@ -9,12 +9,11 @@ volta_base_controller:
   publish_rate: 10
   pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
   twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
-  cmd_vel_timeout: 1000.0
+  cmd_vel_timeout: 10.0
   base_frame_id: base_link
   enable_odom_tf: false
   estimate_velocity_from_position: false
   wheel_separation_multiplier: 1.0
-  wheel_separation: 0.2575
   wheel_radius_multiplier    : 1.0
   linear:
     x:
