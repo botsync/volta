@@ -1,4 +1,0 @@
-# set the udev rule , make the device_port be fixed by the peripherals
-#
-
-KERNEL=="ttyUSB*", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{product}=="FT232R USB UART", MODE:="0777", SYMLINK+="mcu"

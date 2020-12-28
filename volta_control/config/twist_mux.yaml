@@ -14,6 +14,11 @@ topics:
   topic   : keyboard/cmd_vel
   timeout : 0.5
   priority: 80
+-
+  name    : user
+  topic   : user/cmd_vel
+  timeout : 0.5
+  priority: 70
 locks:
 -
   name    : estop

@@ -5,7 +5,6 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  hector_gazebo_plugins
 )
 
 catkin_package(

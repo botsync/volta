@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<!--
+
+Copyright (c) 2020, Botsync Pte. Ltd.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of the Botsync Pte. Ltd. nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+
+<robot name="volta" xmlns:xacro="https://ros.org/wiki/xacro">
+
+  <xacro:macro name="lidar" params="frame:=lidar topic:=scan_filtered sample_size:=271 update_rate:=50
+                 min_angle:=-1.57 max_angle:=1.57 min_range:=0.5 max_range:=10.0 rplidar_a3_enabled:=true hokuyo_ust_10lx_enabled:=false robot_namespace:=/">
+
+      <xacro:if value="${rplidar_a3_enabled}">
+        <!-- RPLidar mount x position -->
+        <xacro:property name="lidar_joint_x" value="0.1995"/>
+        <!-- lidar link -->
+        <link name="${frame}">
+            <visual>
+                <origin xyz="0 0 -0.03" rpy="0 0 0.785398"/>
+                <geometry>
+                    <mesh filename="package://volta_description/meshes/rplidar.dae"/>
+                </geometry>
+            </visual>
+            <collision>
+                <origin xyz="0 0 -0.03" rpy="0 0 0"/>
+                <geometry>
+                  <mesh filename="package://volta_description/meshes/rplidar.dae"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <origin xyz="0 0 ${0.025-0.03}" rpy="0 0 0"/>
+                <mass value="0.3"/>
+                <inertia ixx="0.00028" ixy="0.0" ixz="0.0" iyy="0.00028" iyz="0.0" izz="0.00022" />
+            </inertial>
+        </link>
+        <!-- lidar joint -->
+        <joint name="lidar_joint" type="fixed">
+            <origin xyz="${lidar_joint_x} ${lidar_joint_y} ${lidar_joint_z + 0.03}" rpy="0 0 0" />
+            <parent link="base_link" />
+            <child link="${frame}" />
+        </joint>
+      </xacro:if>
+
+      <xacro:if value="${hokuyo_ust_10lx_enabled}">
+        <!-- Hokuyo lidar mount x position (FRONT)
+        <xacro:property name="lidar_joint_x" value="0.2075"/> -->
+        <!-- Hokuyo lidar mount x position (REAR) -->
+        <xacro:property name="lidar_joint_x" value="0.1917"/>
+
+        <!-- lidar link -->
+        <link name="${frame}">
+            <visual>
+              <origin xyz="0 0 -0.049" rpy="0 0 0"/>
+                <geometry>
+                    <mesh filename="package://volta_description/meshes/hokuyo.dae"/>
+                </geometry>
+            </visual>
+            <collision>
+                <origin xyz="0 0 -0.049" rpy="0 0 0"/>
+                <geometry>
+                  <mesh filename="package://volta_description/meshes/hokuyo.dae"/>
+                </geometry>
+            </collision>
+            <inertial>
+                <origin xyz="0 0 ${0.025-0.049}" rpy="0 0 0"/>
+                <mass value="0.13"/>
+                <inertia ixx="0.00015" ixy="0.0" ixz="0.0" iyy="0.00015" iyz="0.0" izz="0.00009" />
+            </inertial>
+        </link>
+        <!-- lidar joint -->
+        <joint name="lidar_joint" type="fixed">
+            <origin xyz="${lidar_joint_x} ${lidar_joint_y} ${lidar_joint_z + 0.049}" rpy="0 0 0" />
+            <parent link="base_link" />
+            <child link="${frame}" />
+        </joint>
+      </xacro:if>
+
+      <gazebo reference="${frame}">
+        <sensor type="ray" name="${frame}">
+          <always_on>true</always_on>
+          <pose>0 0 0 0 0 0</pose>
+          <visualize>false</visualize>
+          <update_rate>${update_rate}</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>${sample_size}</samples>
+                <resolution>1</resolution>
+                <min_angle>${min_angle}</min_angle>
+                <max_angle>${max_angle}</max_angle>
+              </horizontal>
+            </scan>
+            <range>
+              <min>${min_range}</min>
+              <max>${max_range}</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <plugin name="gazebo_ros_laser" filename="libgazebo_ros_laser.so">
+            <topicName>${topic}</topicName>
+            <frameName>${frame}</frameName>
+            <robotNamespace>${robot_namespace}</robotNamespace>
+            <gaussianNoise>0.005</gaussianNoise>
+            <alwaysOn>true</alwaysOn>
+          </plugin>
+        </sensor>
+      </gazebo>
+  </xacro:macro>
+</robot>

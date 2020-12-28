@@ -1,10 +1,10 @@
 /*
+
 Copyright (c) 2020, Botsync Pte. Ltd.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
-
     * Redistributions of source code must retain the above copyright
       notice, this list of conditions and the following disclaimer.
     * Redistributions in binary form must reproduce the above copyright
@@ -25,7 +25,6 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-\author Botsync Pte. Ltd.
 */
 
 #include <volta_teleoperator/joy_teleop.h>
@@ -79,6 +78,8 @@ void joy_callback(const sensor_msgs::Joy::ConstPtr& joy) {
         cmd.angular.x = 0.0;
         cmd.angular.y = 0.0;
         cmd.angular.z = max_angular_speed * joy->axes[angular_speed_axis];
+	dead_man = true;
+	cmd_to_send = cmd;
 
     } else {
         cmd.linear.x = 0.0;
@@ -87,6 +88,7 @@ void joy_callback(const sensor_msgs::Joy::ConstPtr& joy) {
         cmd.angular.x = 0.0;
         cmd.angular.y = 0.0;
         cmd.angular.z = 0.0;
+	dead_man = false;
     }
 
     cmd_vel_pub.publish(cmd);

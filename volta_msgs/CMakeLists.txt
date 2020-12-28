@@ -11,6 +11,8 @@ add_message_files(
   FILES
   RPM.msg
   Diagnostics.msg
+  Table.msg
+  BMS.msg
   )
 
 generate_messages(DEPENDENCIES std_msgs)
@@ -18,7 +20,3 @@ generate_messages(DEPENDENCIES std_msgs)
 catkin_package(
 )
 
-install(
-  DIRECTORY msg
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-)

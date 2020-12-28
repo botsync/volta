@@ -1,8 +1,8 @@
 #!/bin/bash
 rossetup=/opt/ros/kinetic/setup.bash
-rossetup2=~/catkin_volta/devel/setup.bash
+rossetup2=/home/volta2/catkin_ws/devel/setup.bash
 launcher="roslaunch volta_base volta_bringup.launch"
-pathfile=/home/volta
+pathfile=/home/volta2
 pathfile2=/lib/systemd/system
 cat <<EOF >$pathfile/volta_start.sh
 #!/bin/bash

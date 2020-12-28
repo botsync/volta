@@ -32,16 +32,21 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <!-- xacro includes -->
     <xacro:include filename="$(find volta_description)/urdf/volta_properties.xacro"/>
     <xacro:include filename="$(find volta_description)/urdf/components/wheel_volta.urdf.xacro"/>
+    <xacro:include filename="$(find volta_description)/urdf/components/caster_volta.urdf.xacro"/>
 
     <!-- xacro properties -->
     <xacro:property name="PI" value="3.14159"/>
 
     <!-- xacro args -->
     <xacro:arg name="robot_namespace" default="/" />
-    <xacro:arg name="tf_pre" default="" />
+    <xacro:arg name="tf_pre" default=""/>
     <xacro:arg name="lidar_enabled" default="true"/>
+    <xacro:arg name="rplidar_a3_enabled" default="true"/>
+    <xacro:arg name="hokuyo_ust_10lx_enabled" default="false"/>
     <xacro:arg name="imu_enabled" default="true"/>
     <xacro:arg name="camera_enabled" default="true"/>
+    <xacro:arg name="intel_d435i_enabled" default="true"/>
+    <xacro:arg name="orbbec_astra_pro_enabled" default="false"/>
 
     <xacro:macro name="volta_robot">
         <!-- Footprint -->
@@ -56,21 +61,26 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
         <!-- Chassis a.k.a base_link -->
         <link name="base_link">
-            <visual>
+            <visual name="visual_base">
                 <origin xyz="0 0 0" rpy="0 0 0" />
-                <geometry>s
-                    <mesh filename="package://volta_description/meshes/volta.STL"/>
+                <geometry>
+                    <mesh filename="package://volta_description/meshes/volta.dae"/>
                 </geometry>
-                <material name="gray"/>
+            </visual>
+            <visual name="visual_logo">
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://volta_description/meshes/volta_logo.dae"/>
+                </geometry>
             </visual>
             <collision>
                 <origin xyz="0 0 0" rpy="0 0 0" />
                 <geometry>
-                    <mesh filename="package://volta_description/meshes/volta.STL"/>
+                    <mesh filename="package://volta_description/meshes/volta.dae"/>
                 </geometry>
             </collision>
             <inertial>
-                <origin xyz ="-0.0223 0.0000 0.1018"/>
+		            <origin xyz ="0.00701 0.0000 0.08382"/>
                 <mass value="${base_mass}"/>
                 <inertia ixx="${base_ixx}" ixy="${base_ixy}" ixz="${base_ixz}" iyy="${base_iyy}" iyz="${base_iyz}" izz="${base_izz}"/>
             </inertial>
@@ -85,136 +95,22 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <origin xyz="0.0 ${wheel_joint_y_abs} ${wheel_joint_z_abs}" rpy="0 0 0" />
         </xacro:volta_wheel>
 
-        <link name="caster_front_left_link">
-            <visual>
-                <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-                <geometry>
-                    <sphere radius="${caster_radius}"/>
-                </geometry>
-                <material name="Black"/>
-            </visual>
-            <collision>
-                <geometry>
-                    <sphere radius="${caster_radius}"/>
-                </geometry>
-                <origin rpy="0 0 0" xyz="0 0 0"/>
-            </collision>
-            <inertial>
-                <mass value="0.5"/>
-                <origin xyz="0 0 0"/>
-                <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
-            </inertial>
-        </link>
-        <joint name="caster_front_left_joint" type="fixed">
-            <parent link="base_link"/>
-            <child link="caster_front_left_link"/>
-            <origin rpy="0 0 0" xyz="${caster_joint_x} ${caster_joint_y} ${caster_joint_z}"/>
-        </joint>
-        <gazebo reference="caster_front_left_link">
-            <turnGravityOff>false</turnGravityOff>
-            <mu1 value="0.0"/>
-            <mu2 value="0.0"/>
-        </gazebo>
+        <!-- Caster wheels -->
+        <xacro:volta_caster caster_prefix="front_left">
+            <origin xyz="${caster_joint_x} ${caster_joint_y} ${caster_joint_z}" rpy="0 0 0" />
+        </xacro:volta_caster>
 
-        <link name="caster_front_right_link">
-            <visual>
-                <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-                <geometry>
-                    <sphere radius="${caster_radius}"/>
-                </geometry>
-                <material name="Black"/>
-            </visual>
-            <collision>
-                <geometry>
-                    <sphere radius="${caster_radius}"/>
-                </geometry>
-                <origin rpy="0 0 0" xyz="0 0 0"/>
-            </collision>
-            <inertial>
-                <mass value="0.5"/>
-                <origin xyz="0 0 0"/>
-                <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
-            </inertial>
-        </link>
-        <joint name="caster_front_right_joint" type="fixed">
-            <parent link="base_link"/>
-            <child link="caster_front_right_link"/>
-            <origin rpy="0 0 0" xyz="${caster_joint_x} ${-caster_joint_y} ${caster_joint_z}"/>
-        </joint>
-        <gazebo reference="caster_front_right_link">
-            <turnGravityOff>false</turnGravityOff>
-            <mu1 value="0.0"/>
-            <mu2 value="0.0"/>
-        </gazebo>
+        <xacro:volta_caster caster_prefix="front_right">
+            <origin xyz="${caster_joint_x} ${-caster_joint_y} ${caster_joint_z}" rpy="0 0 0" />
+        </xacro:volta_caster>
 
-        <link name="caster_rear_right_link">
-            <visual>
-                <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-                <geometry>
-                    <sphere radius="${caster_radius}"/>
-                </geometry>
-                <material name="Black"/>
-            </visual>
-            <collision>
-                <geometry>
-                    <sphere radius="${caster_radius}"/>
-                </geometry>
-                <origin rpy="0 0 0" xyz="0 0 0"/>
-            </collision>
-            <inertial>
-                <mass value="0.5"/>
-                <origin xyz="0 0 0"/>
-                <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
-            </inertial>
-        </link>
-        <joint name="caster_rear_right_joint" type="fixed">
-            <parent link="base_link"/>
-            <child link="caster_rear_right_link"/>
-            <origin rpy="0 0 0" xyz="${-caster_joint_x} ${-caster_joint_y} ${caster_joint_z}"/>
-        </joint>
-        <gazebo reference="caster_rear_right_link">
-            <turnGravityOff>false</turnGravityOff>
-            <mu1 value="0.0"/>
-            <mu2 value="0.0"/>
-        </gazebo>
+        <xacro:volta_caster caster_prefix="rear_right">
+            <origin xyz="${-caster_joint_x} ${-caster_joint_y} ${caster_joint_z}" rpy="0 0 0" />
+        </xacro:volta_caster>
 
-        <link name="caster_rear_left_link">
-            <visual>
-                <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-                <geometry>
-                    <sphere radius="${caster_radius}"/>
-                </geometry>
-                <material name="Black"/>
-            </visual>
-            <collision>
-                <geometry>
-                    <sphere radius="${caster_radius}"/>
-                </geometry>
-                <origin rpy="0 0 0" xyz="0 0 0"/>
-            </collision>
-            <inertial>
-                <mass value="0.5"/>
-                <origin xyz="0 0 0"/>
-                <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
-            </inertial>
-        </link>
-        <joint name="caster_rear_left_joint" type="fixed">
-            <parent link="base_link"/>
-            <child link="caster_rear_left_link"/>
-            <origin rpy="0 0 0" xyz="${-caster_joint_x} ${caster_joint_y} ${caster_joint_z}"/>
-        </joint>
-        <gazebo reference="caster_rear_left_link">
-            <turnGravityOff>false</turnGravityOff>
-            <mu1 value="0.0"/>
-            <mu2 value="0.0"/>
-        </gazebo>
-
-        <gazebo>
-            <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-                <robotNamespace>$(arg robot_namespace)</robotNamespace>
-                <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
-            </plugin>
-        </gazebo>
+        <xacro:volta_caster caster_prefix="rear_left">
+            <origin xyz="${-caster_joint_x} ${caster_joint_y} ${caster_joint_z}" rpy="0 0 0" />
+        </xacro:volta_caster>
 
         <!-- IMU -->
         <xacro:if value="$(arg imu_enabled)">
@@ -224,15 +120,23 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
         <!-- LIDAR -->
         <xacro:if value="$(arg lidar_enabled)">
-            <xacro:include filename="$(find volta_description)/urdf/accessories/rpi_a3_volta.urdf.xacro"/>
-            <xacro:lidar robot_namespace="$(arg robot_namespace)"></xacro:lidar>
+            <xacro:include filename="$(find volta_description)/urdf/accessories/lidar_volta.urdf.xacro"/>
+            <xacro:lidar rplidar_a3_enabled="$(arg rplidar_a3_enabled)" hokuyo_ust_10lx_enabled="$(arg hokuyo_ust_10lx_enabled)" robot_namespace="$(arg robot_namespace)">  </xacro:lidar>
         </xacro:if>
 
         <!-- Camera -->
         <xacro:if value="$(arg camera_enabled)">
             <xacro:include filename="$(find volta_description)/urdf/accessories/camera_volta.urdf.xacro"/>
-            <xacro:camera_></xacro:camera_>
+            <xacro:camera_ intel_d435i_enabled="$(arg intel_d435i_enabled)" orbbec_astra_pro_enabled="$(arg orbbec_astra_pro_enabled)" robot_namespace="$(arg robot_namespace)"></xacro:camera_>
         </xacro:if>
+
+        <!-- Robot Gazebo tag -->
+        <gazebo>
+            <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+                <robotNamespace>$(arg robot_namespace)</robotNamespace>
+                <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+            </plugin>
+        </gazebo>
 
     </xacro:macro>
 

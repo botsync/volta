@@ -1,16 +1,9 @@
 #!/bin/bash
-
 echo ""
 echo "This script copies a udev rule to /etc to facilitate bringing"
-echo "up the following usb connection as /dev/imu /dev/rplidar"
-echo "up the following usb connection as /dev/mcu"
-echo "up the following usb connection as /dev/imu"
 echo ""
 
-sudo cp `rospack find volta_rules`/10-volta-usb.rules /etc/udev/rules.d
-sudo cp `rospack find volta_rules`/mcu.rules /etc/udev/rules.d
-sudo cp `rospack find volta_rules`/imu.rules /etc/udev/rules.d
-
+sudo cp `rospack find volta_rules`/udev_rules.rules /etc/udev/rules.d
 
 echo ""
 echo "Restarting udev"

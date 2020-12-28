@@ -1,4 +1,5 @@
 # Volta
+Version:1.0.0
 ROS packages used to to run volta with hardware
 
 * volta_base - Package contains files to connect to the robot and run the sensor driver.
@@ -9,9 +10,6 @@ ROS packages used to to run volta with hardware
 * volta_navigation - Contains files required for running gmapping, amcl and move_base ROS packages.
 * volta_teleoperation - Control the robot using keyboard or Joystick.
 * volta_rules - Contains rules that ensures the USB peripherals are binded correctly
-
-
-### For volta to use in Gazebo simulation - https://github.com/botsync/volta_simulation
 
 ## Steps to Launch Volta :
 

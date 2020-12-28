@@ -1,3 +1,0 @@
-
-##imu
-KERNEL=="ttyUSB*",ATTRS{serial}=="00EB7217", MODE:="0777", SYMLINK+="imu"

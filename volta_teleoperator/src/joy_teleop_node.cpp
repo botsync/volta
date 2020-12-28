@@ -1,10 +1,10 @@
 /*
+
 Copyright (c) 2020, Botsync Pte. Ltd.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
-
     * Redistributions of source code must retain the above copyright
       notice, this list of conditions and the following disclaimer.
     * Redistributions in binary form must reproduce the above copyright
@@ -25,9 +25,7 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-\author Botsync Pte. Ltd.
 */
-
 
 #include <volta_teleoperator/joy_teleop.h>
 
@@ -63,5 +61,15 @@ int main(int argc, char** argv) {
         e_stop_pub = nh.advertise<std_msgs::Bool>(e_stop_pub_topic, 1);
     }
 
-    ros::spin();
+    ros::Rate r(5);
+    while (ros::ok()) {
+        if (dead_man) {
+            cmd_vel_pub.publish(cmd_to_send);
+        }
+        r.sleep();
+        ros::spinOnce();
+    }
+
+    return 0;
+    //ros::spin();
 }

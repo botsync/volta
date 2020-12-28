@@ -1,4 +1,5 @@
 /*
+
 Copyright (c) 2020, Botsync Pte. Ltd.
 All rights reserved.
 
@@ -9,7 +10,7 @@ modification, are permitted provided that the following conditions are met:
     * Redistributions in binary form must reproduce the above copyright
       notice, this list of conditions and the following disclaimer in the
       documentation and/or other materials provided with the distribution.
-    * Neither the name of the Botsync Pte. Ltd. nor the
+    * Neither the name of the Botsync Pte. Ltd. nor the 
       names of its contributors may be used to endorse or promote products
       derived from this software without specific prior written permission.
 
@@ -48,5 +49,8 @@ ros::Subscriber joy_subscriber;
 
 ros::Publisher cmd_vel_pub;
 ros::Publisher e_stop_pub;
+
+bool dead_man = false;
+geometry_msgs::Twist cmd_to_send;
 
 void joy_callback(const sensor_msgs::Joy::ConstPtr& joy);
