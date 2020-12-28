@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import usb.core
+import rospkg
 
 existing_idvendor_list = []
 existing_idproduct_list = []
@@ -110,7 +111,10 @@ print("imu_idvendor : " + imu_idvendor + "," + " imu_idproduct : " + imu_idprodu
 print("camera_idvendor : " + camera_idvendor + "," + " camera_idproduct : " + camera_idproduct)
 
 ###################### copying the data to udev rules
-f= open("udev_rules.rules","w+")
+rospack = rospkg.RosPack()
+path = rospack.get_path('volta_rules')
+f= open(path + "/udev_rules.rules","w+")
+
 f.write('KERNEL=="ttyUSB*", ATTRS{idVendor}=="'+MCU_idvendor+'", ATTRS{idProduct}=="'+MCU_idproduct+'", MODE:="0777", SYMLINK+="mcu"'+ '\n')
 
 # For rplidar
