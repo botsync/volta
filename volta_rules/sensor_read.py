@@ -114,6 +114,7 @@ print("camera_idvendor : " + camera_idvendor + "," + " camera_idproduct : " + ca
 rospack = rospkg.RosPack()
 path = rospack.get_path('volta_rules')
 f= open(path + "/udev_rules.rules","w+")
+
 f.write('KERNEL=="ttyUSB*", ATTRS{idVendor}=="'+MCU_idvendor+'", ATTRS{idProduct}=="'+MCU_idproduct+'", MODE:="0777", SYMLINK+="mcu"'+ '\n')
 
 # For rplidar
