@@ -3,7 +3,7 @@
 
 ### 1. For binding sensors - 
 ```
-$ python sensor_read.py  
+$ rosrun volta_rules sensor_read.py  
 ```
 ### 2. For updating udev rules - 
 ```
