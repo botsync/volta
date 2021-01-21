@@ -14,7 +14,7 @@
         <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
         <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
         <include file="$(find volta_control)/launch/control.launch" />
-        <include file="$(find volta_teleoperator)/launch/volta_teleoperator.launch" />
+        <include file="$(find volta_teleoperator)/launch/teleoperator.launch" />
         <include file="$(find volta_localization)/launch/localization.launch"/>
         
     </group>
