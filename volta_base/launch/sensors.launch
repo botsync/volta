@@ -6,7 +6,8 @@
     <arg name="intel_D435i_camera" default="false"/>
     <arg name="orbbec_astra_pro_camera" default="false"/>
     <arg name="hokuyo_ust10lx_lidar" default="false"/>
-    <arg name="rplidar_a3" default="true"/>
+    <arg name="rplidar_a3" default="false"/>
+    <arg name="rplidar_a2" default="true"/>
 
     <!--Download ROS package from here - https://github.com/ros-drivers/um7-->
     <group if="$(arg chrobotics_um7_imu)">
@@ -24,7 +25,7 @@
       <node pkg="wit_imu_driver" type="wit_imu_driver" name="wit_imu_driver">
         <param name="device" value="/dev/imu"/>
         <param name="frame_id" value="imu"/>
-        <param name="baud" value="9600"/>
+        <param name="baud" value="115200"/>
         <remap from="data_raw" to="imu/data"/>
       </node>
     </group>
@@ -70,6 +71,23 @@
         <param name="scan_mode"           type="string" value="Sensitivity"/>
         <remap from="scan" to="scan_filtered"/>
       </node>
+    </group>
+
+    <!-- Download ROS package from here - https://github.com/botsync/rplidar_ros-->
+    <group if="$(arg rplidar_a2)">
+        <node name="rplidarNode"        pkg="rplidar_ros"  type="rplidarNode" output="screen">
+          <param name="serial_port"         type="string" value="/dev/rplidar"/>
+          <param name="serial_baudrate"     type="int"    value="115200"/>
+          <param name="frame_id"            type="string" value="lidar"/>
+          <param name="inverted"            type="bool"   value="false"/>
+          <param name="angle_compensate"    type="bool"   value="true"/>
+          <param name="scan_mode"           type="string" value="Boost"/>
+          <remap from="scan" to="scan"/>
+        </node>
+	
+	<node name="laser_filters" pkg="laser_filters" type="scan_to_scan_filter_chain">
+	  <rosparam command="load" file="$(find volta_base)/config/rplidarA2.yaml"/>	  
+	</node>
     </group>
 
 </launch>

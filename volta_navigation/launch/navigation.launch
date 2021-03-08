@@ -1,5 +1,5 @@
 <launch>
-    <arg name="odom_topic" default="odometry/filtered"/>
+    <arg name="odom_topic" default="odometry/wheel"/>
     <arg name="gmapping" default="false"/>
     <arg name="scan_topic" default="scan_filtered" />
     <arg name="base_global" default="global_planner/GlobalPlanner"/>

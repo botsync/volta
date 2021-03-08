@@ -5,7 +5,7 @@ linear_speed_axis: 1
 angular_speed_axis: 0
 
 max_linear_speed: 0.5
-max_angular_speed: 0.5
+max_angular_speed: 0.7
 
 enable_e_stop: 1
 
