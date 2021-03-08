@@ -1,8 +1,6 @@
-footprint: [[-0.19, -0.13], [-0.19, 0.13], [0.19, 0.13], [0.19, -0.13]]
-# footprint: [[-0.29, -0.23], [-0.29, 0.23], [0.29, 0.23], [0.29, -0.23]]
+footprint: [[-0.26, -0.19], [-0.26, 0.19], [0.235, 0.19], [0.235, -0.19]]
 
-footprint_padding: 0.08
-# footprint_padding: 0.045
+footprint_padding: 0.02
 robot_base_frame: base_link
 update_frequency: 3.0
 publish_frequency: 2.0
@@ -11,7 +9,7 @@ publish_voxel_map: false
 resolution: 0.05
 
 obstacle_range: 5.5
-raytrace_range: 6.0
+raytrace_range: 8.0
 static:
   map_topic: map
   subscribe_to_updates: true
@@ -19,8 +17,8 @@ static:
 
 obstacles_laser:
   observation_sources: laser
-  laser: {data_type: LaserScan, clearing: true, marking: true, topic: scan_filtered, inf_is_valid: false}
+  laser: {data_type: LaserScan, clearing: true, marking: true, topic: scan_filtered, inf_is_valid: true}
 
 inflation:
-  inflation_radius: 0.5
-  cost_scaling_factor: 0.5
+  inflation_radius: 0.6
+  cost_scaling_factor: 1.0

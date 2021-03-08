@@ -17,6 +17,7 @@ install(PROGRAMS
 catkin_install_python(PROGRAMS sensor_read.py
         DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
-install(FILES udev_rules.rules
+install(FILES
+        udev_rules.rules
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )

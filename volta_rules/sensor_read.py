@@ -10,6 +10,17 @@ new_idproduct_list = []
 def Diff(list1, list2):
     return (list(list(set(list1)-set(list2)) + list(set(list2)-set(list1))))
 
+def add_leading_zeros(product_id):
+    if(product_id != 0):
+	if(len(product_id)==3):
+		return ('0'+product_id)
+	elif(len(product_id)==2):
+		return ('00'+product_id)
+	elif(len(product_id)==1):
+		return ('000'+product_id)
+	else:
+		return product_id
+
 raw_input("Unplug all the USB devices from the system and press 'Enter'" + '\n')
 dev = usb.core.find(find_all=True)
 for cfg in dev:
@@ -27,12 +38,14 @@ MCU_idvendor = ''.join(Diff(new_idvendor_list, existing_idvendor_list))
 existing_idvendor_list.append(MCU_idvendor)
 if(MCU_idvendor == ""):
     MCU_idvendor = 0
-MCU_idvendor = format(int(MCU_idvendor), 'x')
+
+MCU_idvendor = add_leading_zeros(format(int(MCU_idvendor), 'x'))
 MCU_idproduct = ''.join(Diff(new_idproduct_list, existing_idproduct_list))
 existing_idproduct_list.append(MCU_idproduct)
 if(MCU_idproduct == ""):
     MCU_idproduct = 0
-MCU_idproduct = format(int(MCU_idproduct), 'x')
+
+MCU_idproduct = add_leading_zeros(format(int(MCU_idproduct), 'x'))
 if (MCU_idvendor == '0' or MCU_idproduct == '0'):
     print ("Not binding MCU" + '\n')
 else:
@@ -49,12 +62,14 @@ rplidar_idvendor = ''.join(Diff(new_idvendor_list, existing_idvendor_list))
 existing_idvendor_list.append(rplidar_idvendor)
 if(rplidar_idvendor == ""):
     rplidar_idvendor = 0
-rplidar_idvendor = format(int(rplidar_idvendor), 'x')
+
+rplidar_idvendor = add_leading_zeros(format(int(rplidar_idvendor), 'x'))
 rplidar_idproduct = ''.join(Diff(new_idproduct_list, existing_idproduct_list))
 existing_idproduct_list.append(rplidar_idproduct)
 if(rplidar_idproduct == ""):
     rplidar_idproduct = 0
-rplidar_idproduct = format(int(rplidar_idproduct), 'x')
+
+rplidar_idproduct = add_leading_zeros(format(int(rplidar_idproduct), 'x'))
 if (rplidar_idvendor == '0' or rplidar_idproduct == '0'):
     print ("Not binding rplidar" + '\n')
 else:
@@ -71,12 +86,14 @@ imu_idvendor = ''.join(Diff(new_idvendor_list, existing_idvendor_list))
 existing_idvendor_list.append(imu_idvendor)
 if(imu_idvendor == ""):
     imu_idvendor = 0
-imu_idvendor = format(int(imu_idvendor), 'x')
+
+imu_idvendor = add_leading_zeros(format(int(imu_idvendor), 'x'))
 imu_idproduct = ''.join(Diff(new_idproduct_list, existing_idproduct_list))
 existing_idproduct_list.append(imu_idproduct)
 if(imu_idproduct == ""):
     imu_idproduct = 0
-imu_idproduct = format(int(imu_idproduct), 'x')
+
+imu_idproduct = add_leading_zeros(format(int(imu_idproduct), 'x'))
 if (imu_idvendor == '0' or imu_idproduct == '0'):
     print ("Not binding IMU" + '\n')
 else:
@@ -93,12 +110,14 @@ camera_idvendor = ''.join(Diff(new_idvendor_list, existing_idvendor_list))
 existing_idvendor_list.append(camera_idvendor)
 if(camera_idvendor == ""):
     camera_idvendor = 0
-camera_idvendor = format(int(camera_idvendor), 'x')
+
+camera_idvendor = add_leading_zeros(format(int(camera_idvendor), 'x'))
 camera_idproduct = ''.join(Diff(new_idproduct_list, existing_idproduct_list))
 existing_idproduct_list.append(camera_idproduct)
 if(camera_idproduct == ""):
     camera_idproduct = 0
-camera_idproduct = format(int(camera_idproduct), 'x')
+
+camera_idproduct = add_leading_zeros(format(int(camera_idproduct), 'x'))
 if (camera_idvendor == '0' or camera_idproduct == '0'):
     print ("Not binding camera" + '\n')
 else:
@@ -114,7 +133,6 @@ print("camera_idvendor : " + camera_idvendor + "," + " camera_idproduct : " + ca
 rospack = rospkg.RosPack()
 path = rospack.get_path('volta_rules')
 f= open(path + "/udev_rules.rules","w+")
-
 f.write('KERNEL=="ttyUSB*", ATTRS{idVendor}=="'+MCU_idvendor+'", ATTRS{idProduct}=="'+MCU_idproduct+'", MODE:="0777", SYMLINK+="mcu"'+ '\n')
 
 # For rplidar

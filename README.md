@@ -1,5 +1,5 @@
 # Volta
-Version:1.0.0
+Version:1.1.0
 ROS packages used to to run volta with hardware
 
 * volta_base - Package contains files to connect to the robot and run the sensor driver.

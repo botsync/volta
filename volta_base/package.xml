@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <package>
   <name>volta_base</name>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
   <description>The volta_base package</description>
+
 
   <author email="nikhil@botsync.co">Nikhil Venkatesh</author>
   <author email="mahendra.l@botsync.co">Mahendra L Seervi</author>

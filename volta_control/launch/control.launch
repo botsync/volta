@@ -8,6 +8,7 @@
 
     <node name="relay_odom" pkg="topic_tools" type="relay" output="screen" args="volta_base_controller/odom odometry/wheel" />
     <node name="relay_cmd_vel" pkg="topic_tools" type="relay" output="screen" args="cmd_vel volta_base_controller/cmd_vel" />
+    <node name="relay_imu" pkg="topic_tools" type="relay" output="screen" args="imu/data volta_base_controller/imu/data" />
 
     <node pkg="twist_mux" type="twist_mux" name="twist_mux" output="screen">
         <remap from="cmd_vel_out" to="cmd_vel" />

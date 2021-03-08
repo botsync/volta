@@ -1,26 +1,20 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="intel_D435i_camera" default="false"/>
-    <arg name="orbbec_astra_pro_camera" default="false"/>
-    <arg name="hokuyo_ust10lx_lidar" default="false"/>
-    <arg name="rplidar_a3" default="true"/>
-
     <group>
-
+        
         <node name="volta_hardware_node" pkg="volta_hardware" type="volta_hardware_node">
         </node>
         <node name="serial_node" pkg="volta_hardware" type="serial_node">
         </node>
+       
 
         <arg name="model" default="$(find volta_description)/urdf/volta.xacro"/>
-        <param name="robot_description" command="$(find xacro)/xacro.py --inorder $(arg model) rplidar_a3_enabled:=$(arg rplidar_a3)  hokuyo_ust_10lx_enabled:=$(arg hokuyo_ust10lx_lidar) intel_d435i_enabled:=$(arg intel_D435i_camera) orbbec_astra_pro_enabled:=$(arg orbbec_astra_pro_camera)"/>
-
-	    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+        <param name="robot_description" command="$(find xacro)/xacro.py --inorder $(arg model)"/>
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
         <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
-
         <include file="$(find volta_control)/launch/control.launch" />
-        <include file="$(find volta_localization)/launch/localization.launch"/>
         <include file="$(find volta_teleoperator)/launch/teleoperator.launch" />
-
+        <include file="$(find volta_localization)/launch/localization.launch"/>
+        
     </group>
 </launch>

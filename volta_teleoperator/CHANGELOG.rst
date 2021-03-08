@@ -2,6 +2,6 @@
 Changelog for package volta_teleoperator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.0.0 (2020-11-18)
+1.1.0 (2020-11-19)
 ------------------
 * First Release

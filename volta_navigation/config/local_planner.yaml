@@ -1,14 +1,14 @@
 controller_frequency: 5.0
-controller_patience: 60.0
-planner_frequency: 5.0
-planner_patience: 60.0
+controller_patience: 80.0
+planner_frequency: 2.0
+planner_patience: 80.0
 shutdown_costmaps: true
 oscillation_distance: 0.8
-oscillation_timeout: 15.0
-conservative_reset_dist: 0.2
-cost_factor: 1.0
-neutral_cost: 55
-lethal_cost: 253
+oscillation_timeout: 10.0
+conservative_reset_dist: 0.1
+cost_factor: 0.58
+neutral_cost: 66
+lethal_cost: 240
 
 recovery_behaviour_enabled: true
 recovery_behaviors: [{name: conservative_reset, type: clear_costmap_recovery/ClearCostmapRecovery}, {name: aggressive_reset, type: clear_costmap_recovery/ClearCostmapRecovery}]
@@ -17,7 +17,7 @@ DWAPlannerROS:
   acc_lim_x: 0.75
   acc_limit_trans: 0.75
   acc_lim_y: 0.0
-  acc_lim_theta: 1.0
+  acc_lim_theta: 3.0
 
   max_vel_x: 0.5
   min_vel_x: 0.0
@@ -25,29 +25,29 @@ DWAPlannerROS:
   min_vel_y: 0.0
 
   max_trans_vel: 0.5
-  min_trans_vel: 0.1
+  min_trans_vel: 0.02
   max_rot_vel: 1.0
-  min_rot_vel: 0.12
-  trans_stopped_vel: 0.1
-  rot_stopped_vel: 0.3
-  yaw_goal_tolerance: 0.3
-  xy_goal_tolerance: 0.2
+  min_rot_vel: 0.08
+  trans_stopped_vel: 0.018
+  rot_stopped_vel: 0.07
+  yaw_goal_tolerance: 0.1
+  xy_goal_tolerance: 0.3
   latch_xy_goal_tolerance: true
 
-  sim_time: 2.0
+  sim_time: 2.5
   sim_granularity: 0.03
   angular_sim_granularity: 0.05
-  vx_samples: 10
+  vx_samples: 20
   vy_samples: 0
-  vtheta_samples: 20
+  vtheta_samples: 30
 
   penalize_negative_x: true
-  path_distance_bias: 100.0
-  goal_distance_bias: 24.0
+  path_distance_bias: 50.0
+  goal_distance_bias: 20.0
   occdist_scale: 0.1
   forward_point_distance: 0.6
-  stop_time_buffer: 0.2
-  scaling_speed: 0.1
+  stop_time_buffer: 0.1
+  scaling_speed: 0.2
   control_frequency: 10.0
   max_scaling_factor: 0.1
 
