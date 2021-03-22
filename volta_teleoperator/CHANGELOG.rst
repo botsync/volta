@@ -2,8 +2,8 @@
 Changelog for package volta_teleoperator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.1.1 (2021-03-22)
+------------------
 * Updated yaml config and launch files.
 * Merge branch 'kinetic-devel-r2-update' into melodic-devel
 * Merge branch 'melodic-devel' into kinetic-devel-r2-update
