@@ -3,7 +3,7 @@ Changelog for package volta_base
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1.0.1 (2021-03-22)
------------
+------------------
 * Fixed versions
 * Updated yaml config, launch files and License
 * Kinetic devel r2 update to Kinetic (`#7 <https://github.com/botsync/volta/issues/7>`_)
