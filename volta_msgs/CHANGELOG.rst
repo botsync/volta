@@ -2,11 +2,6 @@
 Changelog for package volta_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-<<<<<<< HEAD
-1.0.0 (2020-11-18)
-------------------
-* First Release
-=======
 Forthcoming
 -----------
 * Updated yaml config and launch files.
@@ -21,4 +16,3 @@ Forthcoming
 1.1.0 (2020-11-19)
 ------------------
 * First Release
->>>>>>> melodic-devel
