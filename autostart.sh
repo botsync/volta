@@ -1,5 +1,5 @@
 #!/bin/bash
-rossetup=/opt/ros/melodic/setup.bash
+rossetup=/opt/ros/noetic/setup.bash
 rossetup2=/home/volta/catkin_volta/devel/setup.bash
 launcher="roslaunch volta_base bringup.launch"
 pathfile=/home/volta

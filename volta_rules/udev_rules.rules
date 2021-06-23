@@ -1,4 +1,4 @@
 KERNEL=="ttyUSB*", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", MODE:="0777", SYMLINK+="mcu"
 KERNEL=="ttyUSB*", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", MODE:="0777", SYMLINK+="rplidar"
 KERNEL=="ttyUSB*", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", MODE:="0777", SYMLINK+="imu"
-KERNEL=="ttyUSB*", ATTRS{idVendor}=="0", ATTRS{idProduct}=="0", MODE:="0777", SYMLINK+="camera"
+KERNEL=="ttyUSB*", ATTRS{idVendor}=="0000", ATTRS{idProduct}=="0000", MODE:="0777", SYMLINK+="camera"

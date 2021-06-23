@@ -14,10 +14,10 @@ volta_base_controller:
   enable_odom_tf: true
   estimate_velocity_from_position: false
 
-  wheel_separation_multiplier: 1.0
+  wheel_separation_multiplier: 1.049
   wheel_separation: 0.3208
   wheel_radius: 0.0425
-  wheel_radius_multiplier    : 1.016
+  wheel_radius_multiplier    : 0.9965
 
   linear:
     x:

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package>
+<package format="2">
   <name>volta_base</name>
   <version>1.1.1</version>
   <description>The volta_base package</description>

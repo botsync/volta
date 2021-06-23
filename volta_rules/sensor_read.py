@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import usb.core
 import rospkg
 
@@ -11,24 +11,24 @@ def Diff(list1, list2):
     return (list(list(set(list1)-set(list2)) + list(set(list2)-set(list1))))
 
 def add_leading_zeros(product_id):
-    if(product_id != 0):
-	if(len(product_id)==3):
-		return ('0'+product_id)
-	elif(len(product_id)==2):
-		return ('00'+product_id)
-	elif(len(product_id)==1):
-		return ('000'+product_id)
-	else:
-		return product_id
+	if(product_id != 0):
+		if(len(product_id)==3):
+			return ('0'+product_id)
+		elif(len(product_id)==2):
+	  		return ('00'+product_id)
+		elif(len(product_id)==1):
+		  	return ('000'+product_id)
+		else:
+	  		return product_id
 
-raw_input("Unplug all the USB devices from the system and press 'Enter'" + '\n')
+input("Unplug all the USB devices from the system and press 'Enter'" + '\n')
 dev = usb.core.find(find_all=True)
 for cfg in dev:
     existing_idvendor_list.append(str(cfg.idVendor))
     existing_idproduct_list.append(str(cfg.idProduct))
 
 ####################### To read the idproduct and idvendor for MCU #######################
-raw_input("Plug MCU board and press 'Enter'")
+input("Plug MCU board and press 'Enter'")
 dev = usb.core.find(find_all=True)
 for cfg in dev:
     new_idvendor_list.append(str(cfg.idVendor))
@@ -52,7 +52,7 @@ else:
     print("MCU_idvendor : " + MCU_idvendor + "," +" MCU_idproduct : " + MCU_idproduct + '\n')
 
 ####################### To read the idproduct and idvendor for rplidar #######################
-raw_input("Plug rplidar and press 'Enter'")
+input("Plug rplidar and press 'Enter'")
 dev = usb.core.find(find_all=True)
 for cfg in dev:
     new_idvendor_list.append(str(cfg.idVendor))
@@ -76,7 +76,7 @@ else:
     print("rplidar_idvendor : " + rplidar_idvendor + "," + " rplidar_idproduct : " + rplidar_idproduct + '\n')
 
 ####################### To read the idproduct and idvendor for IMU sensor #######################
-raw_input("plug imu sensor and press 'Enter'")
+input("plug imu sensor and press 'Enter'")
 dev = usb.core.find(find_all=True)
 for cfg in dev:
     new_idvendor_list.append(str(cfg.idVendor))
@@ -100,7 +100,7 @@ else:
     print("imu_idvendor : " + imu_idvendor + "," + " imu_idproduct : " + imu_idproduct + '\n')
 
 ####################### To read the idproduct and idvendor for camera #######################
-raw_input("plug camera and press 'Enter'")
+input("plug camera and press 'Enter'")
 dev = usb.core.find(find_all=True)
 for cfg in dev:
     new_idvendor_list.append(str(cfg.idVendor))

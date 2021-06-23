@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package>
+<package format="2">
   <name>volta_control</name>
   <version>1.1.1</version>
   <description>The volta_control package</description>
@@ -17,10 +17,10 @@
   <build_depend>diff_drive_controller</build_depend>
   <build_depend>joint_state_controller</build_depend>
   <build_depend>twist_mux</build_depend>
-  <run_depend>controller_manager</run_depend>
-  <run_depend>diff_drive_controller</run_depend>
-  <run_depend>joint_state_controller</run_depend>
-  <run_depend>twist_mux</run_depend>
+  <exec_depend>controller_manager</exec_depend>
+  <exec_depend>diff_drive_controller</exec_depend>
+  <exec_depend>joint_state_controller</exec_depend>
+  <exec_depend>twist_mux</exec_depend>
 
   <export>
   </export>

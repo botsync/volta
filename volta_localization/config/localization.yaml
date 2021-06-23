@@ -7,7 +7,6 @@ ekf_se_odom:
   print_diagnostics: false
   debug: false
 
-  # map_frame: map
   odom_frame: odom
   base_link_frame: base_link
   world_frame: odom

@@ -275,8 +275,8 @@ Visualization Manager:
       Queue Size: 10
       Selectable: true
       Size (Pixels): 2
-      Size (m): 0.00999999978
-      Style: Points
+      Size (m): 0.1
+      Style: Boxes
       Topic: /scan_filtered
       Unreliable: false
       Use Fixed Frame: true
